@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <footer th:fragment="footer" class="footer">
+        <div class="container">
+            <span th:text="${'Adote Pets v' + @environment.getProperty('info.app.version')}" class="text-muted"></span>
+        </div>
+    </footer>
+</html>

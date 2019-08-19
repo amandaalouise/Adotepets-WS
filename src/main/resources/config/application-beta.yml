@@ -1,0 +1,9 @@
+# configuracoes gerais
+spring:
+  jpa:
+    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/adotepets
+    username: root
+    password: root

@@ -1,0 +1,81 @@
+# configuracoes gerais
+spring:
+  application.name: adotepets
+  jmx.enabled: false
+
+  datasource:
+    url: jdbc:postgresql://${adotepets_db_host}:${adotepets_db_port}/${adotepets_db_name}
+    username: ${adotepets_db_user}
+    password: ${adotepets_db_password}
+    hikari.pool-name: ${spring.application.name}
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari.maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.jdbc.batch_size: 20
+      hibernate.connection.autocommit: false
+      org.hibernate.envers.store_data_at_delete: true
+      org.hibernate.envers.revision_field_name: revision
+      org.hibernate.envers.audit_table_suffix: _audit
+      org.hibernate.envers.revision_type_field_name: revision_type
+
+  flyway:
+    enabled: true
+    check-location: true
+    locations: classpath:db/migrations
+    sql-migration-prefix:
+    baseline-on-migrate: true
+    baseline-version: 0
+
+# desabilita preservar sessao no restart
+server:
+  servlet:
+    session:
+      persistent: false
+
+# configuracoes do actuator
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: ['health', 'info', 'flyway' , 'logfile', 'uso', 'parametros']
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+    flyway:
+      enabled: true
+    logfile:
+      enabled: true
+      external-file: ${adotepets_log_path}
+
+# configuracoes de logging
+logging.level:
+  root: INFO
+  org.hibernate: INFO
+  org.springframework: INFO
+  org.springframework.web: INFO
+  org.springframework.security: INFO
+  org.springframework.context.support: INFO
+
+# configs de logging
+logging:
+  file: ${adotepets_log_path}
+
+# informacoes do sistema
+info:
+  app:
+    name: adotepets
+    module: ${spring.application.name}
+    version: @project.version@-@project.build-number@
+    environment: @active.profile@

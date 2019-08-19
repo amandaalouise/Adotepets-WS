@@ -1,0 +1,170 @@
+package br.com.adotepets.domain.model.entities.seguranca;
+
+import br.com.adotepets.domain.model.entities.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.envers.Audited;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import static javax.persistence.CascadeType.REMOVE;
+import static javax.persistence.FetchType.EAGER;
+
+@Entity
+@Audited
+@Table
+@ToString(callSuper = false, exclude = "autorizacoes")
+@EqualsAndHashCode(callSuper = true, exclude = "autorizacoes")
+public class Usuario extends PersistentEntity implements UserDetails {
+
+    @Getter
+    @Setter
+    private String nome;
+
+    @Getter
+    @Setter
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Getter
+    @Setter
+    private String senha;
+
+    @Getter
+    @Setter
+    private String imagem;
+
+    @Getter
+    @Setter
+    private String telefone;
+
+    @Getter
+    @Setter
+    private String celular;
+
+    @Getter
+    @Setter
+    private String authToken;
+
+    @Getter
+    @Setter
+    private String facebook;
+
+    @Getter
+    @Setter
+    private boolean ativo = false;
+
+    @Getter
+    @Setter
+    private String codConfirmacao;
+
+    @JsonIgnore
+    @JsonProperty
+    @OneToMany(mappedBy = "usuario", fetch = EAGER, cascade = REMOVE)
+    private List<Autorizacao> autorizacoes;
+
+    /**
+     * Construtor...
+     */
+    public Usuario() {
+        this.ativo = true;
+    }
+
+    /**
+     * @return
+     */
+    public Usuario desativar() {
+        this.ativo = false;
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public Usuario ativar() {
+        this.ativo = true;
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public Collection<Autorizacao> getAuthorities() {
+        return Collections.unmodifiableList(this.autorizacoes);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public String getPassword() {
+        return this.getSenha();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public String getUsername() {
+        return this.getNome();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return this.isAtivo();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public boolean isAccountNonLocked() {
+        return this.isAtivo();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return this.isAtivo();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return
+     */
+    @Override
+    public boolean isEnabled() {
+        return this.isAtivo();
+    }
+}

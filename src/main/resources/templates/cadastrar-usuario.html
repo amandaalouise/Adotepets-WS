@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Adote Pets</title>
+
+        <link rel="stylesheet" href="/resources/css/style.css">
+
+        <link rel="stylesheet" href="/webjars/font-awesome/5.8.1/css/all.min.css">
+        <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <script type="text/javascript" src="/resources/js/usuarios.js"></script>
+
+        <script type="text/javascript" src="/webjars/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div lang="en" th:replace="fragments/header :: header"></div>
+        <main role="main" class="container">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <h3>Cadastrar Usuario</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form th:action="@{/usuarios/cadastrar}" th:object="${usuario}" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inNome" >Nome</label>
+                                <input id="inNome" class="form-control" type="text" th:field="*{nome}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inEmail" >E-Mail</label>
+                                <input id="inEmail" class="form-control" type="text" th:field="*{email}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inNomeUsuario" >Usuário</label>
+                                <input id="inNomeUsuario" class="form-control" type="text" th:field="*{nomeUsuario}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inSenha" >Senha</label>
+                                <input id="inSenha" class="form-control" type="password" th:field="*{senha}" />
+                            </div>
+                            <div class="form-group col-md-12 text-right">
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                                <a role="button" class="btn btn-primary" th:href="@{/usuarios}">Voltar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <div lang="en" th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>
