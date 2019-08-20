@@ -1,4 +1,0 @@
-# configuracoes gerais
-spring:
-  jpa:
-    show-sql: false
