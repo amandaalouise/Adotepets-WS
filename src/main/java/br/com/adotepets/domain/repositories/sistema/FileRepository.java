@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -135,12 +136,12 @@ public class FileRepository {
      * @param file
      * @throws Exception
      */
-    public void handleUploadDoacao(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioDoacao, Long> anuncioDoacaoRepository) throws Exception {
+    public void handleUploadDoacao(Long anuncioId, List<MultipartFile> file, JpaRepository<AnuncioDoacao, Long> anuncioDoacaoRepository) throws Exception {
 
         final AnuncioDoacao doacao = anuncioDoacaoRepository.findById(anuncioId).get();
         List<String> files = new ArrayList<>();
 
-        for (byte[] f : file) {
+        for (MultipartFile f : file) {
 
             String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
 
@@ -150,7 +151,7 @@ public class FileRepository {
             final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.DOACAO_FOLDER + String.valueOf(anuncioId);
 
             //salva o arquivo.
-            this.save(path, fileName, f);
+            this.save(path, fileName, f.getBytes());
         }
 
         doacao.getAnimal().setImagens(files);
@@ -199,12 +200,12 @@ public class FileRepository {
      * @param file
      * @throws Exception
      */
-    public void handleUploadPerdido(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioPerdido, Long> anuncioPerdidoRepository) throws Exception {
+    public void handleUploadPerdido(Long anuncioId, List<MultipartFile> file, JpaRepository<AnuncioPerdido, Long> anuncioPerdidoRepository) throws Exception {
 
         final AnuncioPerdido perdido = anuncioPerdidoRepository.findById(anuncioId).get();
         List<String> files = new ArrayList<>();
 
-        for (byte[] f : file) {
+        for (MultipartFile f : file) {
 
             String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
 
@@ -214,7 +215,7 @@ public class FileRepository {
             final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.PERD_FOLDER + String.valueOf(anuncioId);
 
             //salva o arquivo.
-            this.save(path, fileName, f);
+            this.save(path, fileName, f.getBytes());
         }
 
         perdido.getAnimal().setImagens(files);
@@ -263,12 +264,12 @@ public class FileRepository {
      * @param file
      * @throws Exception
      */
-    public void handleUploadEncontrado(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioEncontrado, Long> anuncioEncontradoRepository) throws Exception {
+    public void handleUploadEncontrado(Long anuncioId, List<MultipartFile> file, JpaRepository<AnuncioEncontrado, Long> anuncioEncontradoRepository) throws Exception {
 
         final AnuncioEncontrado encontrado = anuncioEncontradoRepository.findById(anuncioId).get();
         List<String> files = new ArrayList<>();
 
-        for (byte[] f : file) {
+        for (MultipartFile f : file) {
 
             String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
 
@@ -278,7 +279,7 @@ public class FileRepository {
             final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.ENC_FOLDER + String.valueOf(anuncioId);
 
             //salva o arquivo.
-            this.save(path, fileName, f);
+            this.save(path, fileName, f.getBytes());
         }
 
         encontrado.getAnimal().setImagens(files);

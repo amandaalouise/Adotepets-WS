@@ -7,9 +7,9 @@ import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -30,20 +30,20 @@ public class UsuarioResource extends AbstractResource<Usuario> {
 
     /**
      * @param value
+     * @param uploadedFile
      * @return
      */
+    @Transactional
     @PostMapping(value = "/upload")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario createAndUpload(@RequestParam @Valid String value, @RequestParam("file") MultipartFile uploadedFile) {
-
-        Usuario usuario;
 
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
             var usuarioMapped = objectMapper.readValue(value, Usuario.class);
 
-            usuario = this.repository.save(usuarioMapped);
+            final Usuario usuario = this.repository.save(usuarioMapped);
 
             this.fileRepository.handleFileUpload(usuario.getId(), uploadedFile.getBytes(), this.repository);
 
@@ -54,9 +54,6 @@ public class UsuarioResource extends AbstractResource<Usuario> {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-
         }
-
     }
-
 }
