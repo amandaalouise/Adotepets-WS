@@ -31,8 +31,9 @@ public class Mensagem extends PersistentEntity implements Serializable {
 
     @Getter
     @Setter
-    @OneToOne
-    private Usuario usuarioPergunta;
+    @OneToOne(targetEntity = Usuario.class)
+    @JoinColumn(referencedColumnName = "id")
+    private Long usuarioPergunta;
 
     @Getter
     @Setter

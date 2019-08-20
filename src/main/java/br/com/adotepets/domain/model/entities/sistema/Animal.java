@@ -2,16 +2,15 @@ package br.com.adotepets.domain.model.entities.sistema;
 
 import br.com.adotepets.domain.model.entities.PersistentEntity;
 import br.com.adotepets.domain.model.entities.seguranca.Usuario;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -68,7 +67,8 @@ public class Animal extends PersistentEntity {
 
     @Getter
     @Setter
-    @OneToOne
-    private Usuario usuario;
+    @OneToOne(targetEntity = Usuario.class)
+    @JoinColumn(referencedColumnName = "id")
+    private Long usuario;
 
 }

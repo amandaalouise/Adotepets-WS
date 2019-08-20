@@ -8,10 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -23,12 +20,14 @@ public class Denuncia extends PersistentEntity implements Serializable {
 
     @Getter
     @Setter
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToOne(targetEntity = Anuncio.class)
+    @JoinColumn(referencedColumnName = "id")
     private Anuncio anuncioDenunciado;
 
     @Getter
     @Setter
-    @OneToOne
+    @OneToOne(targetEntity = Usuario.class)
+    @JoinColumn(referencedColumnName = "id")
     private Usuario usuarioDenunciante;
 
 }

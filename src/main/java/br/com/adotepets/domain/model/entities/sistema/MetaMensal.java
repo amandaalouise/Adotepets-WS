@@ -9,6 +9,7 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -33,12 +34,13 @@ public class MetaMensal extends PersistentEntity implements Serializable {
 
     @Getter
     @Setter
-    @OneToOne
-    private Prestador prestador;
+    @OneToOne(targetEntity = Prestador.class)
+    @JoinColumn(referencedColumnName = "id")
+    private Long prestador;
 
     @Getter
     @Setter
-    private double progressoTotal;
+    private BigDecimal progressoTotal;
 
 
 }

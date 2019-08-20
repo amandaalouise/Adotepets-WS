@@ -5,7 +5,7 @@
 -- Dumped from database version 11.5
 -- Dumped by pg_dump version 11.5
 
--- Started on 2019-08-20 10:33:37 -03
+-- Started on 2019-08-20 08:45:04 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,11 +18,13 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+SET default_tablespace = '';
+
 SET default_with_oids = false;
 
 --
--- TOC entry 197 (class 1259 OID 30715)
--- Name: animal; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 197 (class 1259 OID 21174)
+-- Name: animal; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.animal (
@@ -43,9 +45,11 @@ CREATE TABLE public.animal (
 );
 
 
+ALTER TABLE public.animal OWNER TO sa_adotepets;
+
 --
--- TOC entry 198 (class 1259 OID 30724)
--- Name: animal_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 198 (class 1259 OID 21183)
+-- Name: animal_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.animal_audit (
@@ -66,9 +70,11 @@ CREATE TABLE public.animal_audit (
 );
 
 
+ALTER TABLE public.animal_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 196 (class 1259 OID 30713)
--- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 196 (class 1259 OID 21172)
+-- Name: animal_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.animal_id_seq
@@ -79,18 +85,20 @@ CREATE SEQUENCE public.animal_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.animal_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3153 (class 0 OID 0)
 -- Dependencies: 196
--- Name: animal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: animal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.animal_id_seq OWNED BY public.animal.id;
 
 
 --
--- TOC entry 199 (class 1259 OID 30732)
--- Name: animal_imagens; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 199 (class 1259 OID 21191)
+-- Name: animal_imagens; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.animal_imagens (
@@ -99,9 +107,11 @@ CREATE TABLE public.animal_imagens (
 );
 
 
+ALTER TABLE public.animal_imagens OWNER TO sa_adotepets;
+
 --
--- TOC entry 200 (class 1259 OID 30735)
--- Name: animal_imagens_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 200 (class 1259 OID 21194)
+-- Name: animal_imagens_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.animal_imagens_audit (
@@ -112,9 +122,11 @@ CREATE TABLE public.animal_imagens_audit (
 );
 
 
+ALTER TABLE public.animal_imagens_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 202 (class 1259 OID 30742)
--- Name: anuncio; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 202 (class 1259 OID 21201)
+-- Name: anuncio; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.anuncio (
@@ -133,9 +145,11 @@ CREATE TABLE public.anuncio (
 );
 
 
+ALTER TABLE public.anuncio OWNER TO sa_adotepets;
+
 --
--- TOC entry 203 (class 1259 OID 30751)
--- Name: anuncio_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 203 (class 1259 OID 21210)
+-- Name: anuncio_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.anuncio_audit (
@@ -154,9 +168,11 @@ CREATE TABLE public.anuncio_audit (
 );
 
 
+ALTER TABLE public.anuncio_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 201 (class 1259 OID 30740)
--- Name: anuncio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 201 (class 1259 OID 21199)
+-- Name: anuncio_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.anuncio_id_seq
@@ -167,18 +183,20 @@ CREATE SEQUENCE public.anuncio_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.anuncio_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3154 (class 0 OID 0)
 -- Dependencies: 201
--- Name: anuncio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: anuncio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.anuncio_id_seq OWNED BY public.anuncio.id;
 
 
 --
--- TOC entry 205 (class 1259 OID 30761)
--- Name: autorizacao; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 205 (class 1259 OID 21220)
+-- Name: autorizacao; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.autorizacao (
@@ -190,9 +208,11 @@ CREATE TABLE public.autorizacao (
 );
 
 
+ALTER TABLE public.autorizacao OWNER TO sa_adotepets;
+
 --
--- TOC entry 206 (class 1259 OID 30767)
--- Name: autorizacao_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 206 (class 1259 OID 21226)
+-- Name: autorizacao_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.autorizacao_audit (
@@ -204,9 +224,11 @@ CREATE TABLE public.autorizacao_audit (
 );
 
 
+ALTER TABLE public.autorizacao_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 204 (class 1259 OID 30759)
--- Name: autorizacao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 204 (class 1259 OID 21218)
+-- Name: autorizacao_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.autorizacao_id_seq
@@ -217,18 +239,20 @@ CREATE SEQUENCE public.autorizacao_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.autorizacao_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3155 (class 0 OID 0)
 -- Dependencies: 204
--- Name: autorizacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: autorizacao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.autorizacao_id_seq OWNED BY public.autorizacao.id;
 
 
 --
--- TOC entry 208 (class 1259 OID 30774)
--- Name: denuncia; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 208 (class 1259 OID 21233)
+-- Name: denuncia; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.denuncia (
@@ -240,9 +264,11 @@ CREATE TABLE public.denuncia (
 );
 
 
+ALTER TABLE public.denuncia OWNER TO sa_adotepets;
+
 --
--- TOC entry 209 (class 1259 OID 30780)
--- Name: denuncia_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 209 (class 1259 OID 21239)
+-- Name: denuncia_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.denuncia_audit (
@@ -254,9 +280,11 @@ CREATE TABLE public.denuncia_audit (
 );
 
 
+ALTER TABLE public.denuncia_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 207 (class 1259 OID 30772)
--- Name: denuncia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 207 (class 1259 OID 21231)
+-- Name: denuncia_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.denuncia_id_seq
@@ -267,18 +295,20 @@ CREATE SEQUENCE public.denuncia_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.denuncia_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3156 (class 0 OID 0)
 -- Dependencies: 207
--- Name: denuncia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: denuncia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.denuncia_id_seq OWNED BY public.denuncia.id;
 
 
 --
--- TOC entry 212 (class 1259 OID 30795)
--- Name: item_meta; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 212 (class 1259 OID 21254)
+-- Name: item_meta; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.item_meta (
@@ -293,9 +323,11 @@ CREATE TABLE public.item_meta (
 );
 
 
+ALTER TABLE public.item_meta OWNER TO sa_adotepets;
+
 --
--- TOC entry 210 (class 1259 OID 30785)
--- Name: item_meta_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 210 (class 1259 OID 21244)
+-- Name: item_meta_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.item_meta_audit (
@@ -310,9 +342,11 @@ CREATE TABLE public.item_meta_audit (
 );
 
 
+ALTER TABLE public.item_meta_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 211 (class 1259 OID 30793)
--- Name: item_meta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 211 (class 1259 OID 21252)
+-- Name: item_meta_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.item_meta_id_seq
@@ -323,18 +357,20 @@ CREATE SEQUENCE public.item_meta_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.item_meta_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3157 (class 0 OID 0)
 -- Dependencies: 211
--- Name: item_meta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: item_meta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.item_meta_id_seq OWNED BY public.item_meta.id;
 
 
 --
--- TOC entry 214 (class 1259 OID 30806)
--- Name: mensagem; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 214 (class 1259 OID 21265)
+-- Name: mensagem; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.mensagem (
@@ -349,9 +385,11 @@ CREATE TABLE public.mensagem (
 );
 
 
+ALTER TABLE public.mensagem OWNER TO sa_adotepets;
+
 --
--- TOC entry 215 (class 1259 OID 30812)
--- Name: mensagem_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 215 (class 1259 OID 21271)
+-- Name: mensagem_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.mensagem_audit (
@@ -366,9 +404,11 @@ CREATE TABLE public.mensagem_audit (
 );
 
 
+ALTER TABLE public.mensagem_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 213 (class 1259 OID 30804)
--- Name: mensagem_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 213 (class 1259 OID 21263)
+-- Name: mensagem_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.mensagem_id_seq
@@ -379,18 +419,20 @@ CREATE SEQUENCE public.mensagem_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.mensagem_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3158 (class 0 OID 0)
 -- Dependencies: 213
--- Name: mensagem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: mensagem_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.mensagem_id_seq OWNED BY public.mensagem.id;
 
 
 --
--- TOC entry 216 (class 1259 OID 30817)
--- Name: mensagem_respostas; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 216 (class 1259 OID 21276)
+-- Name: mensagem_respostas; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.mensagem_respostas (
@@ -399,9 +441,11 @@ CREATE TABLE public.mensagem_respostas (
 );
 
 
+ALTER TABLE public.mensagem_respostas OWNER TO sa_adotepets;
+
 --
--- TOC entry 217 (class 1259 OID 30820)
--- Name: mensagem_respostas_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 217 (class 1259 OID 21279)
+-- Name: mensagem_respostas_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.mensagem_respostas_audit (
@@ -412,9 +456,11 @@ CREATE TABLE public.mensagem_respostas_audit (
 );
 
 
+ALTER TABLE public.mensagem_respostas_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 221 (class 1259 OID 30837)
--- Name: meta_mensal; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 221 (class 1259 OID 21296)
+-- Name: meta_mensal; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.meta_mensal (
@@ -423,14 +469,16 @@ CREATE TABLE public.meta_mensal (
     updated_on timestamp without time zone,
     ano integer NOT NULL,
     mes integer NOT NULL,
-    progresso_total numeric(19,2),
+    progresso_total double precision NOT NULL,
     prestador_id bigint
 );
 
 
+ALTER TABLE public.meta_mensal OWNER TO sa_adotepets;
+
 --
--- TOC entry 218 (class 1259 OID 30825)
--- Name: meta_mensal_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 218 (class 1259 OID 21284)
+-- Name: meta_mensal_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.meta_mensal_audit (
@@ -439,14 +487,16 @@ CREATE TABLE public.meta_mensal_audit (
     revision_type smallint,
     ano integer,
     mes integer,
-    progresso_total numeric(19,2),
+    progresso_total double precision,
     prestador_id bigint
 );
 
 
+ALTER TABLE public.meta_mensal_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 220 (class 1259 OID 30835)
--- Name: meta_mensal_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 220 (class 1259 OID 21294)
+-- Name: meta_mensal_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.meta_mensal_id_seq
@@ -457,18 +507,20 @@ CREATE SEQUENCE public.meta_mensal_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.meta_mensal_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3159 (class 0 OID 0)
 -- Dependencies: 220
--- Name: meta_mensal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: meta_mensal_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.meta_mensal_id_seq OWNED BY public.meta_mensal.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 30843)
--- Name: meta_mensal_itens; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 222 (class 1259 OID 21302)
+-- Name: meta_mensal_itens; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.meta_mensal_itens (
@@ -477,9 +529,11 @@ CREATE TABLE public.meta_mensal_itens (
 );
 
 
+ALTER TABLE public.meta_mensal_itens OWNER TO sa_adotepets;
+
 --
--- TOC entry 219 (class 1259 OID 30830)
--- Name: meta_mensal_itens_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 219 (class 1259 OID 21289)
+-- Name: meta_mensal_itens_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.meta_mensal_itens_audit (
@@ -490,9 +544,11 @@ CREATE TABLE public.meta_mensal_itens_audit (
 );
 
 
+ALTER TABLE public.meta_mensal_itens_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 224 (class 1259 OID 30848)
--- Name: permissao; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 224 (class 1259 OID 21307)
+-- Name: permissao; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.permissao (
@@ -503,9 +559,11 @@ CREATE TABLE public.permissao (
 );
 
 
+ALTER TABLE public.permissao OWNER TO sa_adotepets;
+
 --
--- TOC entry 225 (class 1259 OID 30854)
--- Name: permissao_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 225 (class 1259 OID 21313)
+-- Name: permissao_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.permissao_audit (
@@ -516,9 +574,11 @@ CREATE TABLE public.permissao_audit (
 );
 
 
+ALTER TABLE public.permissao_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 223 (class 1259 OID 30846)
--- Name: permissao_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 223 (class 1259 OID 21305)
+-- Name: permissao_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.permissao_id_seq
@@ -529,18 +589,20 @@ CREATE SEQUENCE public.permissao_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.permissao_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3160 (class 0 OID 0)
 -- Dependencies: 223
--- Name: permissao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: permissao_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.permissao_id_seq OWNED BY public.permissao.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 30861)
--- Name: resposta; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 227 (class 1259 OID 21320)
+-- Name: resposta; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.resposta (
@@ -552,9 +614,11 @@ CREATE TABLE public.resposta (
 );
 
 
+ALTER TABLE public.resposta OWNER TO sa_adotepets;
+
 --
--- TOC entry 228 (class 1259 OID 30867)
--- Name: resposta_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 228 (class 1259 OID 21326)
+-- Name: resposta_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.resposta_audit (
@@ -566,9 +630,11 @@ CREATE TABLE public.resposta_audit (
 );
 
 
+ALTER TABLE public.resposta_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 226 (class 1259 OID 30859)
--- Name: resposta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 226 (class 1259 OID 21318)
+-- Name: resposta_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.resposta_id_seq
@@ -579,18 +645,20 @@ CREATE SEQUENCE public.resposta_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.resposta_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3161 (class 0 OID 0)
 -- Dependencies: 226
--- Name: resposta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: resposta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.resposta_id_seq OWNED BY public.resposta.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 30874)
--- Name: revision; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 230 (class 1259 OID 21333)
+-- Name: revision; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.revision (
@@ -600,9 +668,11 @@ CREATE TABLE public.revision (
 );
 
 
+ALTER TABLE public.revision OWNER TO sa_adotepets;
+
 --
--- TOC entry 229 (class 1259 OID 30872)
--- Name: revision_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 229 (class 1259 OID 21331)
+-- Name: revision_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.revision_id_seq
@@ -613,18 +683,20 @@ CREATE SEQUENCE public.revision_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.revision_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3162 (class 0 OID 0)
 -- Dependencies: 229
--- Name: revision_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: revision_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.revision_id_seq OWNED BY public.revision.id;
 
 
 --
--- TOC entry 232 (class 1259 OID 30882)
--- Name: th_registros_usos; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 232 (class 1259 OID 21341)
+-- Name: th_registros_usos; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.th_registros_usos (
@@ -637,9 +709,11 @@ CREATE TABLE public.th_registros_usos (
 );
 
 
+ALTER TABLE public.th_registros_usos OWNER TO sa_adotepets;
+
 --
--- TOC entry 231 (class 1259 OID 30880)
--- Name: th_registros_usos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 231 (class 1259 OID 21339)
+-- Name: th_registros_usos_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.th_registros_usos_id_seq
@@ -650,18 +724,20 @@ CREATE SEQUENCE public.th_registros_usos_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.th_registros_usos_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3163 (class 0 OID 0)
 -- Dependencies: 231
--- Name: th_registros_usos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: th_registros_usos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.th_registros_usos_id_seq OWNED BY public.th_registros_usos.id;
 
 
 --
--- TOC entry 234 (class 1259 OID 30890)
--- Name: usuario; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 234 (class 1259 OID 21349)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.usuario (
@@ -693,9 +769,11 @@ CREATE TABLE public.usuario (
 );
 
 
+ALTER TABLE public.usuario OWNER TO sa_adotepets;
+
 --
--- TOC entry 235 (class 1259 OID 30899)
--- Name: usuario_audit; Type: TABLE; Schema: public; Owner: -
+-- TOC entry 235 (class 1259 OID 21358)
+-- Name: usuario_audit; Type: TABLE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE TABLE public.usuario_audit (
@@ -727,9 +805,11 @@ CREATE TABLE public.usuario_audit (
 );
 
 
+ALTER TABLE public.usuario_audit OWNER TO sa_adotepets;
+
 --
--- TOC entry 233 (class 1259 OID 30888)
--- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- TOC entry 233 (class 1259 OID 21347)
+-- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: sa_adotepets
 --
 
 CREATE SEQUENCE public.usuario_id_seq
@@ -740,114 +820,116 @@ CREATE SEQUENCE public.usuario_id_seq
     CACHE 1;
 
 
+ALTER TABLE public.usuario_id_seq OWNER TO sa_adotepets;
+
 --
 -- TOC entry 3164 (class 0 OID 0)
 -- Dependencies: 233
--- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sa_adotepets
 --
 
 ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 
 --
--- TOC entry 2932 (class 2604 OID 30718)
--- Name: animal id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2932 (class 2604 OID 21177)
+-- Name: animal id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal ALTER COLUMN id SET DEFAULT nextval('public.animal_id_seq'::regclass);
 
 
 --
--- TOC entry 2933 (class 2604 OID 30745)
--- Name: anuncio id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2933 (class 2604 OID 21204)
+-- Name: anuncio id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.anuncio ALTER COLUMN id SET DEFAULT nextval('public.anuncio_id_seq'::regclass);
 
 
 --
--- TOC entry 2934 (class 2604 OID 30764)
--- Name: autorizacao id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2934 (class 2604 OID 21223)
+-- Name: autorizacao id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao ALTER COLUMN id SET DEFAULT nextval('public.autorizacao_id_seq'::regclass);
 
 
 --
--- TOC entry 2935 (class 2604 OID 30777)
--- Name: denuncia id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2935 (class 2604 OID 21236)
+-- Name: denuncia id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia ALTER COLUMN id SET DEFAULT nextval('public.denuncia_id_seq'::regclass);
 
 
 --
--- TOC entry 2936 (class 2604 OID 30798)
--- Name: item_meta id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2936 (class 2604 OID 21257)
+-- Name: item_meta id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.item_meta ALTER COLUMN id SET DEFAULT nextval('public.item_meta_id_seq'::regclass);
 
 
 --
--- TOC entry 2937 (class 2604 OID 30809)
--- Name: mensagem id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2937 (class 2604 OID 21268)
+-- Name: mensagem id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem ALTER COLUMN id SET DEFAULT nextval('public.mensagem_id_seq'::regclass);
 
 
 --
--- TOC entry 2938 (class 2604 OID 30840)
--- Name: meta_mensal id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2938 (class 2604 OID 21299)
+-- Name: meta_mensal id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal ALTER COLUMN id SET DEFAULT nextval('public.meta_mensal_id_seq'::regclass);
 
 
 --
--- TOC entry 2939 (class 2604 OID 30851)
--- Name: permissao id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2939 (class 2604 OID 21310)
+-- Name: permissao id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.permissao ALTER COLUMN id SET DEFAULT nextval('public.permissao_id_seq'::regclass);
 
 
 --
--- TOC entry 2940 (class 2604 OID 30864)
--- Name: resposta id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2940 (class 2604 OID 21323)
+-- Name: resposta id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.resposta ALTER COLUMN id SET DEFAULT nextval('public.resposta_id_seq'::regclass);
 
 
 --
--- TOC entry 2941 (class 2604 OID 30877)
--- Name: revision id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2941 (class 2604 OID 21336)
+-- Name: revision id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.revision ALTER COLUMN id SET DEFAULT nextval('public.revision_id_seq'::regclass);
 
 
 --
--- TOC entry 2942 (class 2604 OID 30885)
--- Name: th_registros_usos id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2942 (class 2604 OID 21344)
+-- Name: th_registros_usos id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.th_registros_usos ALTER COLUMN id SET DEFAULT nextval('public.th_registros_usos_id_seq'::regclass);
 
 
 --
--- TOC entry 2943 (class 2604 OID 30893)
--- Name: usuario id; Type: DEFAULT; Schema: public; Owner: -
+-- TOC entry 2943 (class 2604 OID 21352)
+-- Name: usuario id; Type: DEFAULT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usuario_id_seq'::regclass);
 
 
 --
--- TOC entry 2947 (class 2606 OID 30731)
--- Name: animal_audit animal_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2947 (class 2606 OID 21190)
+-- Name: animal_audit animal_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal_audit
@@ -855,8 +937,8 @@ ALTER TABLE ONLY public.animal_audit
 
 
 --
--- TOC entry 2949 (class 2606 OID 30739)
--- Name: animal_imagens_audit animal_imagens_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2949 (class 2606 OID 21198)
+-- Name: animal_imagens_audit animal_imagens_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal_imagens_audit
@@ -864,8 +946,8 @@ ALTER TABLE ONLY public.animal_imagens_audit
 
 
 --
--- TOC entry 2945 (class 2606 OID 30723)
--- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2945 (class 2606 OID 21182)
+-- Name: animal animal_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal
@@ -873,8 +955,8 @@ ALTER TABLE ONLY public.animal
 
 
 --
--- TOC entry 2953 (class 2606 OID 30758)
--- Name: anuncio_audit anuncio_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2953 (class 2606 OID 21217)
+-- Name: anuncio_audit anuncio_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.anuncio_audit
@@ -882,8 +964,8 @@ ALTER TABLE ONLY public.anuncio_audit
 
 
 --
--- TOC entry 2951 (class 2606 OID 30750)
--- Name: anuncio anuncio_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2951 (class 2606 OID 21209)
+-- Name: anuncio anuncio_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.anuncio
@@ -891,8 +973,8 @@ ALTER TABLE ONLY public.anuncio
 
 
 --
--- TOC entry 2957 (class 2606 OID 30771)
--- Name: autorizacao_audit autorizacao_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2957 (class 2606 OID 21230)
+-- Name: autorizacao_audit autorizacao_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao_audit
@@ -900,8 +982,8 @@ ALTER TABLE ONLY public.autorizacao_audit
 
 
 --
--- TOC entry 2955 (class 2606 OID 30766)
--- Name: autorizacao autorizacao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2955 (class 2606 OID 21225)
+-- Name: autorizacao autorizacao_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao
@@ -909,8 +991,8 @@ ALTER TABLE ONLY public.autorizacao
 
 
 --
--- TOC entry 2961 (class 2606 OID 30784)
--- Name: denuncia_audit denuncia_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2961 (class 2606 OID 21243)
+-- Name: denuncia_audit denuncia_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia_audit
@@ -918,8 +1000,8 @@ ALTER TABLE ONLY public.denuncia_audit
 
 
 --
--- TOC entry 2959 (class 2606 OID 30779)
--- Name: denuncia denuncia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2959 (class 2606 OID 21238)
+-- Name: denuncia denuncia_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -927,8 +1009,8 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- TOC entry 2963 (class 2606 OID 30792)
--- Name: item_meta_audit item_meta_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2963 (class 2606 OID 21251)
+-- Name: item_meta_audit item_meta_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.item_meta_audit
@@ -936,8 +1018,8 @@ ALTER TABLE ONLY public.item_meta_audit
 
 
 --
--- TOC entry 2965 (class 2606 OID 30803)
--- Name: item_meta item_meta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2965 (class 2606 OID 21262)
+-- Name: item_meta item_meta_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.item_meta
@@ -945,8 +1027,8 @@ ALTER TABLE ONLY public.item_meta
 
 
 --
--- TOC entry 2969 (class 2606 OID 30816)
--- Name: mensagem_audit mensagem_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2969 (class 2606 OID 21275)
+-- Name: mensagem_audit mensagem_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_audit
@@ -954,8 +1036,8 @@ ALTER TABLE ONLY public.mensagem_audit
 
 
 --
--- TOC entry 2967 (class 2606 OID 30811)
--- Name: mensagem mensagem_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2967 (class 2606 OID 21270)
+-- Name: mensagem mensagem_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem
@@ -963,8 +1045,8 @@ ALTER TABLE ONLY public.mensagem
 
 
 --
--- TOC entry 2973 (class 2606 OID 30824)
--- Name: mensagem_respostas_audit mensagem_respostas_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2973 (class 2606 OID 21283)
+-- Name: mensagem_respostas_audit mensagem_respostas_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_respostas_audit
@@ -972,8 +1054,8 @@ ALTER TABLE ONLY public.mensagem_respostas_audit
 
 
 --
--- TOC entry 2975 (class 2606 OID 30829)
--- Name: meta_mensal_audit meta_mensal_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2975 (class 2606 OID 21288)
+-- Name: meta_mensal_audit meta_mensal_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_audit
@@ -981,8 +1063,8 @@ ALTER TABLE ONLY public.meta_mensal_audit
 
 
 --
--- TOC entry 2977 (class 2606 OID 30834)
--- Name: meta_mensal_itens_audit meta_mensal_itens_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2977 (class 2606 OID 21293)
+-- Name: meta_mensal_itens_audit meta_mensal_itens_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_itens_audit
@@ -990,8 +1072,8 @@ ALTER TABLE ONLY public.meta_mensal_itens_audit
 
 
 --
--- TOC entry 2979 (class 2606 OID 30842)
--- Name: meta_mensal meta_mensal_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2979 (class 2606 OID 21301)
+-- Name: meta_mensal meta_mensal_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal
@@ -999,8 +1081,8 @@ ALTER TABLE ONLY public.meta_mensal
 
 
 --
--- TOC entry 2985 (class 2606 OID 30858)
--- Name: permissao_audit permissao_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2985 (class 2606 OID 21317)
+-- Name: permissao_audit permissao_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.permissao_audit
@@ -1008,8 +1090,8 @@ ALTER TABLE ONLY public.permissao_audit
 
 
 --
--- TOC entry 2983 (class 2606 OID 30853)
--- Name: permissao permissao_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2983 (class 2606 OID 21312)
+-- Name: permissao permissao_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.permissao
@@ -1017,8 +1099,8 @@ ALTER TABLE ONLY public.permissao
 
 
 --
--- TOC entry 2989 (class 2606 OID 30871)
--- Name: resposta_audit resposta_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2989 (class 2606 OID 21330)
+-- Name: resposta_audit resposta_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.resposta_audit
@@ -1026,8 +1108,8 @@ ALTER TABLE ONLY public.resposta_audit
 
 
 --
--- TOC entry 2987 (class 2606 OID 30866)
--- Name: resposta resposta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2987 (class 2606 OID 21325)
+-- Name: resposta resposta_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.resposta
@@ -1035,8 +1117,8 @@ ALTER TABLE ONLY public.resposta
 
 
 --
--- TOC entry 2991 (class 2606 OID 30879)
--- Name: revision revision_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2991 (class 2606 OID 21338)
+-- Name: revision revision_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.revision
@@ -1044,8 +1126,8 @@ ALTER TABLE ONLY public.revision
 
 
 --
--- TOC entry 2993 (class 2606 OID 30887)
--- Name: th_registros_usos th_registros_usos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2993 (class 2606 OID 21346)
+-- Name: th_registros_usos th_registros_usos_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.th_registros_usos
@@ -1053,8 +1135,8 @@ ALTER TABLE ONLY public.th_registros_usos
 
 
 --
--- TOC entry 2995 (class 2606 OID 30912)
--- Name: usuario uk_5171l57faosmj8myawaucatdw; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2995 (class 2606 OID 21371)
+-- Name: usuario uk_5171l57faosmj8myawaucatdw; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.usuario
@@ -1062,8 +1144,8 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 2981 (class 2606 OID 30910)
--- Name: meta_mensal_itens uk_64ra2asc5ufqaiyaaknnnu6hc; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2981 (class 2606 OID 21369)
+-- Name: meta_mensal_itens uk_64ra2asc5ufqaiyaaknnnu6hc; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_itens
@@ -1071,8 +1153,8 @@ ALTER TABLE ONLY public.meta_mensal_itens
 
 
 --
--- TOC entry 2971 (class 2606 OID 30908)
--- Name: mensagem_respostas uk_lv1966hovrtfvceh7votnf6ps; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2971 (class 2606 OID 21367)
+-- Name: mensagem_respostas uk_lv1966hovrtfvceh7votnf6ps; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_respostas
@@ -1080,8 +1162,8 @@ ALTER TABLE ONLY public.mensagem_respostas
 
 
 --
--- TOC entry 2999 (class 2606 OID 30906)
--- Name: usuario_audit usuario_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2999 (class 2606 OID 21365)
+-- Name: usuario_audit usuario_audit_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.usuario_audit
@@ -1089,8 +1171,8 @@ ALTER TABLE ONLY public.usuario_audit
 
 
 --
--- TOC entry 2997 (class 2606 OID 30898)
--- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 2997 (class 2606 OID 21357)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.usuario
@@ -1098,8 +1180,8 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 3019 (class 2606 OID 31008)
--- Name: meta_mensal_audit fk20wp7n1wktqgvpda4whh2012r; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3019 (class 2606 OID 21467)
+-- Name: meta_mensal_audit fk20wp7n1wktqgvpda4whh2012r; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_audit
@@ -1107,8 +1189,8 @@ ALTER TABLE ONLY public.meta_mensal_audit
 
 
 --
--- TOC entry 3022 (class 2606 OID 31023)
--- Name: meta_mensal_itens fk3sbm78npj1jsxywswqmeb9xp4; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3022 (class 2606 OID 21482)
+-- Name: meta_mensal_itens fk3sbm78npj1jsxywswqmeb9xp4; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_itens
@@ -1116,8 +1198,8 @@ ALTER TABLE ONLY public.meta_mensal_itens
 
 
 --
--- TOC entry 3024 (class 2606 OID 31033)
--- Name: permissao_audit fk4h3j0wg1mbjpexb88spjqjdpy; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3024 (class 2606 OID 21492)
+-- Name: permissao_audit fk4h3j0wg1mbjpexb88spjqjdpy; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.permissao_audit
@@ -1125,8 +1207,8 @@ ALTER TABLE ONLY public.permissao_audit
 
 
 --
--- TOC entry 3021 (class 2606 OID 31018)
--- Name: meta_mensal fk6is0of9d6vv222pcyhc4a6d6y; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3021 (class 2606 OID 21477)
+-- Name: meta_mensal fk6is0of9d6vv222pcyhc4a6d6y; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal
@@ -1134,8 +1216,8 @@ ALTER TABLE ONLY public.meta_mensal
 
 
 --
--- TOC entry 3014 (class 2606 OID 30983)
--- Name: mensagem fk7jgenw1tla511yh0qblgtjtjn; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3014 (class 2606 OID 21442)
+-- Name: mensagem fk7jgenw1tla511yh0qblgtjtjn; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem
@@ -1143,8 +1225,8 @@ ALTER TABLE ONLY public.mensagem
 
 
 --
--- TOC entry 3007 (class 2606 OID 30948)
--- Name: autorizacao fk82cy3wxri40li4cb8ael3fa0e; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3007 (class 2606 OID 21407)
+-- Name: autorizacao fk82cy3wxri40li4cb8ael3fa0e; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao
@@ -1152,8 +1234,8 @@ ALTER TABLE ONLY public.autorizacao
 
 
 --
--- TOC entry 3026 (class 2606 OID 31043)
--- Name: usuario_audit fk8g3gtpx61e0oqkfvp5nsejvm8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3026 (class 2606 OID 21502)
+-- Name: usuario_audit fk8g3gtpx61e0oqkfvp5nsejvm8; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.usuario_audit
@@ -1161,8 +1243,8 @@ ALTER TABLE ONLY public.usuario_audit
 
 
 --
--- TOC entry 3001 (class 2606 OID 30918)
--- Name: animal_audit fk8r6r938iv7yxf5agc0q8w2ito; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3001 (class 2606 OID 21377)
+-- Name: animal_audit fk8r6r938iv7yxf5agc0q8w2ito; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal_audit
@@ -1170,8 +1252,8 @@ ALTER TABLE ONLY public.animal_audit
 
 
 --
--- TOC entry 3008 (class 2606 OID 30953)
--- Name: autorizacao_audit fk94vm3dcd3xb26324k1x0adykm; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3008 (class 2606 OID 21412)
+-- Name: autorizacao_audit fk94vm3dcd3xb26324k1x0adykm; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao_audit
@@ -1179,8 +1261,8 @@ ALTER TABLE ONLY public.autorizacao_audit
 
 
 --
--- TOC entry 3017 (class 2606 OID 30998)
--- Name: mensagem_respostas fk9q54m1mnlqfah4aldu9dpbxry; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3017 (class 2606 OID 21457)
+-- Name: mensagem_respostas fk9q54m1mnlqfah4aldu9dpbxry; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_respostas
@@ -1188,8 +1270,8 @@ ALTER TABLE ONLY public.mensagem_respostas
 
 
 --
--- TOC entry 3003 (class 2606 OID 30928)
--- Name: animal_imagens_audit fk9tja8o1ciqj7dvye536w2yr82; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3003 (class 2606 OID 21387)
+-- Name: animal_imagens_audit fk9tja8o1ciqj7dvye536w2yr82; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal_imagens_audit
@@ -1197,8 +1279,8 @@ ALTER TABLE ONLY public.animal_imagens_audit
 
 
 --
--- TOC entry 3012 (class 2606 OID 30973)
--- Name: item_meta_audit fka8jqqpmoc2popf6ug8avwg1p2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3012 (class 2606 OID 21432)
+-- Name: item_meta_audit fka8jqqpmoc2popf6ug8avwg1p2; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.item_meta_audit
@@ -1206,8 +1288,8 @@ ALTER TABLE ONLY public.item_meta_audit
 
 
 --
--- TOC entry 3016 (class 2606 OID 30993)
--- Name: mensagem_respostas fkafvxd1ho5fmmt27h4c5qt40tt; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3016 (class 2606 OID 21452)
+-- Name: mensagem_respostas fkafvxd1ho5fmmt27h4c5qt40tt; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_respostas
@@ -1215,8 +1297,8 @@ ALTER TABLE ONLY public.mensagem_respostas
 
 
 --
--- TOC entry 3009 (class 2606 OID 30958)
--- Name: denuncia fkbtl9d4pfoaveqrcvysts12vbg; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3009 (class 2606 OID 21417)
+-- Name: denuncia fkbtl9d4pfoaveqrcvysts12vbg; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -1224,8 +1306,8 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- TOC entry 3015 (class 2606 OID 30988)
--- Name: mensagem_audit fkekbws1nkosk5fidmcuxmy0yfn; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3015 (class 2606 OID 21447)
+-- Name: mensagem_audit fkekbws1nkosk5fidmcuxmy0yfn; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_audit
@@ -1233,8 +1315,8 @@ ALTER TABLE ONLY public.mensagem_audit
 
 
 --
--- TOC entry 3025 (class 2606 OID 31038)
--- Name: resposta_audit fkfavdwifhce6ddgwp85fmbelln; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3025 (class 2606 OID 21497)
+-- Name: resposta_audit fkfavdwifhce6ddgwp85fmbelln; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.resposta_audit
@@ -1242,8 +1324,8 @@ ALTER TABLE ONLY public.resposta_audit
 
 
 --
--- TOC entry 3006 (class 2606 OID 30943)
--- Name: autorizacao fkgcu3vaio69cwyd4aramwf1x6u; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3006 (class 2606 OID 21402)
+-- Name: autorizacao fkgcu3vaio69cwyd4aramwf1x6u; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.autorizacao
@@ -1251,8 +1333,8 @@ ALTER TABLE ONLY public.autorizacao
 
 
 --
--- TOC entry 3000 (class 2606 OID 30913)
--- Name: animal fkgsmdg0fb7a70kuahxl2tccb00; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3000 (class 2606 OID 21372)
+-- Name: animal fkgsmdg0fb7a70kuahxl2tccb00; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal
@@ -1260,8 +1342,8 @@ ALTER TABLE ONLY public.animal
 
 
 --
--- TOC entry 3020 (class 2606 OID 31013)
--- Name: meta_mensal_itens_audit fkj43lui4xbxj21s4ywphc3vuwx; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3020 (class 2606 OID 21472)
+-- Name: meta_mensal_itens_audit fkj43lui4xbxj21s4ywphc3vuwx; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_itens_audit
@@ -1269,8 +1351,8 @@ ALTER TABLE ONLY public.meta_mensal_itens_audit
 
 
 --
--- TOC entry 3023 (class 2606 OID 31028)
--- Name: meta_mensal_itens fkjh6huwy2d490270ho9jlom8qc; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3023 (class 2606 OID 21487)
+-- Name: meta_mensal_itens fkjh6huwy2d490270ho9jlom8qc; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.meta_mensal_itens
@@ -1278,8 +1360,8 @@ ALTER TABLE ONLY public.meta_mensal_itens
 
 
 --
--- TOC entry 3010 (class 2606 OID 30963)
--- Name: denuncia fkjjecgr2y32rsoot2x4st1p9pr; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3010 (class 2606 OID 21422)
+-- Name: denuncia fkjjecgr2y32rsoot2x4st1p9pr; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia
@@ -1287,8 +1369,8 @@ ALTER TABLE ONLY public.denuncia
 
 
 --
--- TOC entry 3002 (class 2606 OID 30923)
--- Name: animal_imagens fknin3gee4ckjqsww4jigjagbfi; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3002 (class 2606 OID 21382)
+-- Name: animal_imagens fknin3gee4ckjqsww4jigjagbfi; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.animal_imagens
@@ -1296,8 +1378,8 @@ ALTER TABLE ONLY public.animal_imagens
 
 
 --
--- TOC entry 3005 (class 2606 OID 30938)
--- Name: anuncio_audit fkqrhcknmf97lp3fodw7lfo9q5b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3005 (class 2606 OID 21397)
+-- Name: anuncio_audit fkqrhcknmf97lp3fodw7lfo9q5b; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.anuncio_audit
@@ -1305,8 +1387,8 @@ ALTER TABLE ONLY public.anuncio_audit
 
 
 --
--- TOC entry 3018 (class 2606 OID 31003)
--- Name: mensagem_respostas_audit fkrvm5xdxy9uag88hwr2di6dx86; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3018 (class 2606 OID 21462)
+-- Name: mensagem_respostas_audit fkrvm5xdxy9uag88hwr2di6dx86; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem_respostas_audit
@@ -1314,8 +1396,8 @@ ALTER TABLE ONLY public.mensagem_respostas_audit
 
 
 --
--- TOC entry 3004 (class 2606 OID 30933)
--- Name: anuncio fks0gsnu6cdi7p6bfpocqk6d75f; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3004 (class 2606 OID 21392)
+-- Name: anuncio fks0gsnu6cdi7p6bfpocqk6d75f; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.anuncio
@@ -1323,8 +1405,8 @@ ALTER TABLE ONLY public.anuncio
 
 
 --
--- TOC entry 3011 (class 2606 OID 30968)
--- Name: denuncia_audit fkt1inxpq5mhw3fdj3u85q6sy4n; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3011 (class 2606 OID 21427)
+-- Name: denuncia_audit fkt1inxpq5mhw3fdj3u85q6sy4n; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.denuncia_audit
@@ -1332,15 +1414,15 @@ ALTER TABLE ONLY public.denuncia_audit
 
 
 --
--- TOC entry 3013 (class 2606 OID 30978)
--- Name: mensagem fkwff1jtw3ecfoiq9rjp2ak1w5; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- TOC entry 3013 (class 2606 OID 21437)
+-- Name: mensagem fkwff1jtw3ecfoiq9rjp2ak1w5; Type: FK CONSTRAINT; Schema: public; Owner: sa_adotepets
 --
 
 ALTER TABLE ONLY public.mensagem
     ADD CONSTRAINT fkwff1jtw3ecfoiq9rjp2ak1w5 FOREIGN KEY (anuncio_id) REFERENCES public.anuncio(id);
 
 
--- Completed on 2019-08-20 10:33:38 -03
+-- Completed on 2019-08-20 08:45:04 -03
 
 --
 -- PostgreSQL database dump complete
