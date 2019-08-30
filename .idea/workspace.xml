@@ -3,13 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="66ec8cae-21fc-4fe1-906b-7affbba248b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Denuncia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Denuncia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Mensagem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Mensagem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/MetaMensal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/MetaMensal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migrations/20190820__initialize.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migrations/20190820__initialize.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/themis.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/20190301__initialize.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/controllers/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/UsuarioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/UsuarioResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Autorizacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Permissao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/AutorizacaoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/PermissaoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/services/AutorizacaoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/services/UsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/initializer/AutorizarAdministradorTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/initializer/CriarPermissoesTask.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -55,8 +61,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -239,92 +245,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/AbstractResource.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.repository.findAll();" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

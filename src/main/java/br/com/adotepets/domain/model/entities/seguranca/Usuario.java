@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
@@ -25,8 +26,6 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 @Audited
 @Table
-@ToString(callSuper = false, exclude = "autorizacoes")
-@EqualsAndHashCode(callSuper = true, exclude = "autorizacoes")
 public class Usuario extends PersistentEntity implements UserDetails {
 
     @Getter
@@ -40,6 +39,7 @@ public class Usuario extends PersistentEntity implements UserDetails {
 
     @Getter
     @Setter
+    @JsonIgnore
     private String senha;
 
     @Getter
@@ -70,11 +70,6 @@ public class Usuario extends PersistentEntity implements UserDetails {
     @Setter
     private String codConfirmacao;
 
-    @JsonIgnore
-    @JsonProperty
-    @OneToMany(mappedBy = "usuario", fetch = EAGER, cascade = REMOVE)
-    private List<Autorizacao> autorizacoes;
-
     /**
      * Construtor...
      */
@@ -98,14 +93,9 @@ public class Usuario extends PersistentEntity implements UserDetails {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return
-     */
     @Override
-    public Collection<Autorizacao> getAuthorities() {
-        return Collections.unmodifiableList(this.autorizacoes);
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     /**
@@ -114,6 +104,7 @@ public class Usuario extends PersistentEntity implements UserDetails {
      * @return
      */
     @Override
+    @JsonIgnore
     public String getPassword() {
         return this.getSenha();
     }
