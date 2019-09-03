@@ -37,6 +37,7 @@ public class PrestadorResource extends AbstractResource<Prestador> {
     @Transactional
     @PostMapping(value = "/upload")
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin
     public Prestador createAndUpload(@RequestParam @Valid String value, @RequestParam("file") MultipartFile uploadedFile) {
 
         try {

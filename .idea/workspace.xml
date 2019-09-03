@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="66ec8cae-21fc-4fe1-906b-7affbba248b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/controllers/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/PrestadorResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/PrestadorResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/UsuarioResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/UsuarioResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Autorizacao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Permissao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/AutorizacaoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/PermissaoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/seguranca/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/services/AutorizacaoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/services/UsuarioService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/initializer/AutorizarAdministradorTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/initializer/CriarPermissoesTask.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
