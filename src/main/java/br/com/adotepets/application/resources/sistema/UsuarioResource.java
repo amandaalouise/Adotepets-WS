@@ -71,7 +71,7 @@ public class UsuarioResource extends AbstractResource<Usuario> {
     @Transactional
     @PostMapping(value = "/autenticar")
     @CrossOrigin
-    public ResponseEntity autenticar(@RequestParam String token) {
+    public Usuario autenticar(@RequestParam String token) {
 
         byte[] byteArray = Base64.decodeBase64(token.getBytes());
         String decodedString = new String(byteArray);
@@ -89,9 +89,9 @@ public class UsuarioResource extends AbstractResource<Usuario> {
         System.out.println(passwordEncoder.matches(pass, usuario.getSenha()));
 
         if(passwordEncoder.matches(pass, usuario.getSenha())) {
-            return new ResponseEntity(HttpStatus.OK);
+            return usuario;
         } else {
-            return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+            return null;
         }
     }
 }

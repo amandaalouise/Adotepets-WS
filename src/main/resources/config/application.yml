@@ -3,6 +3,11 @@ spring:
   application.name: adotepets
   jmx.enabled: false
 
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
   datasource:
     url: jdbc:postgresql://${adotepets_db_host}:${adotepets_db_port}/${adotepets_db_name}
     username: ${adotepets_db_user}
@@ -79,3 +84,4 @@ info:
     module: ${spring.application.name}
     version: @project.version@-@project.build-number@
     environment: @active.profile@
+

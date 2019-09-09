@@ -1,6 +1,11 @@
 package br.com.adotepets.domain.model.entities.sistema;
 
 import br.com.adotepets.domain.model.entities.PersistentEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +30,9 @@ public abstract class Anuncio extends PersistentEntity implements Serializable {
 
     @Getter
     @Setter
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dataPublicacao;
 
     @Getter

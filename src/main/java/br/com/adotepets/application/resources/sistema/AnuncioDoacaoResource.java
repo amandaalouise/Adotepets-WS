@@ -2,6 +2,7 @@ package br.com.adotepets.application.resources.sistema;
 
 import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.sistema.AnuncioDoacao;
+import br.com.adotepets.domain.model.exception.ResourceNotFoundException;
 import br.com.adotepets.domain.repositories.sistema.AnuncioDoacaoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,12 +22,14 @@ import java.util.Optional;
 public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
 
     private FileRepository fileRepository = new FileRepository();
+    private AnuncioDoacaoRepository anuncioDoacaoRepository;
 
     /**
-     * @param repository
+     * @param anuncioDoacaoRepository
      */
-    public AnuncioDoacaoResource(AnuncioDoacaoRepository repository) {
-        super(repository);
+    public AnuncioDoacaoResource(AnuncioDoacaoRepository anuncioDoacaoRepository) {
+        super(anuncioDoacaoRepository);
+        this.anuncioDoacaoRepository = anuncioDoacaoRepository;
     }
 
     /**
@@ -34,7 +37,6 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
      * @param uploadedFile
      * @return
      */
-    @Transactional
     @PostMapping(value = "/upload")
     @ResponseStatus(HttpStatus.CREATED)
     public AnuncioDoacao createAndUpload(@RequestParam @Valid String value, @RequestParam("files") List<MultipartFile> uploadedFile) {
@@ -44,11 +46,11 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
             ObjectMapper objectMapper = new ObjectMapper();
             var anuncioMapped = objectMapper.readValue(value, AnuncioDoacao.class);
 
-            final AnuncioDoacao doacao = this.repository.save(anuncioMapped);
+            final AnuncioDoacao doacao = this.anuncioDoacaoRepository.save(anuncioMapped);
 
-            this.fileRepository.handleUploadDoacao(doacao.getId(), uploadedFile, this.repository);
+            this.fileRepository.handleUploadDoacao(doacao.getId(), uploadedFile, this.anuncioDoacaoRepository);
 
-            Optional<AnuncioDoacao> anuncioDoacao = this.repository.findById(doacao.getId());
+            Optional<AnuncioDoacao> anuncioDoacao = this.anuncioDoacaoRepository.findById(doacao.getId());
 
             return anuncioDoacao.get();
 
@@ -56,5 +58,14 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @GetMapping("/porUsuario/{id}")
+    public List<AnuncioDoacao> byUserId(@PathVariable("id") Long id) {
+        return this.anuncioDoacaoRepository.findByAnimalUsuario(id);
     }
 }

@@ -19,7 +19,6 @@ public abstract class PersistentEntity implements IPersistentEntity<Long> {
     @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false)
-    @ApiModelProperty(hidden = true)
     private Long id;
 
     @Getter

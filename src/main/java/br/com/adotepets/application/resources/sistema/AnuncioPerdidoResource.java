@@ -21,12 +21,14 @@ import java.util.Optional;
 public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
 
     private FileRepository fileRepository = new FileRepository();
+    private AnuncioPerdidoRepository anuncioPerdidoRepository;
 
     /**
-     * @param repository
+     * @param anuncioPerdidoRepository
      */
-    public AnuncioPerdidoResource(AnuncioPerdidoRepository repository) {
-        super(repository);
+    public AnuncioPerdidoResource(AnuncioPerdidoRepository anuncioPerdidoRepository) {
+        super(anuncioPerdidoRepository);
+        this.anuncioPerdidoRepository = anuncioPerdidoRepository;
     }
 
     /**
@@ -44,11 +46,11 @@ public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
             ObjectMapper objectMapper = new ObjectMapper();
             var anuncioMapped = objectMapper.readValue(value, AnuncioPerdido.class);
 
-            final AnuncioPerdido perdido = this.repository.save(anuncioMapped);
+            final AnuncioPerdido perdido = this.anuncioPerdidoRepository.save(anuncioMapped);
 
-            this.fileRepository.handleUploadPerdido(perdido.getId(), uploadedFile, this.repository);
+            this.fileRepository.handleUploadPerdido(perdido.getId(), uploadedFile, this.anuncioPerdidoRepository);
 
-            Optional<AnuncioPerdido> anuncioEncontrado = this.repository.findById(perdido.getId());
+            Optional<AnuncioPerdido> anuncioEncontrado = this.anuncioPerdidoRepository.findById(perdido.getId());
 
             return anuncioEncontrado.get();
 
@@ -56,5 +58,14 @@ public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @GetMapping("/porUsuario/{id}")
+    public List<AnuncioPerdido> byUserId(@PathVariable("id") Long id) {
+        return this.anuncioPerdidoRepository.findByAnimalUsuario(id);
     }
 }

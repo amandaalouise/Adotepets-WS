@@ -1,8 +1,7 @@
 package br.com.adotepets.domain.model.entities.seguranca;
 
 import br.com.adotepets.domain.model.entities.PersistentEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +25,8 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 @Audited
 @Table
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityReference(alwaysAsId = true)
 public class Usuario extends PersistentEntity implements UserDetails {
 
     @Getter

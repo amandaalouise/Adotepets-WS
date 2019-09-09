@@ -2,13 +2,16 @@ package br.com.adotepets.domain.model.entities.sistema;
 
 import br.com.adotepets.domain.model.entities.PersistentEntity;
 import br.com.adotepets.domain.model.entities.seguranca.Usuario;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.Persistent;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,7 +33,7 @@ public class Animal extends PersistentEntity {
 
     @Getter
     @Setter
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> imagens;
 
     @Getter
@@ -67,8 +70,9 @@ public class Animal extends PersistentEntity {
 
     @Getter
     @Setter
-    @OneToOne(targetEntity = Usuario.class)
-    @JoinColumn(referencedColumnName = "id")
-    private Long usuario;
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    @JsonIdentityReference(alwaysAsId = true)
+    private Usuario usuario;
 
 }

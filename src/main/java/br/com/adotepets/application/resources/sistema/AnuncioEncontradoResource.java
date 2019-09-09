@@ -21,12 +21,14 @@ import java.util.Optional;
 public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrado> {
 
     private FileRepository fileRepository = new FileRepository();
+    private AnuncioEncontradoRepository anuncioEncontradoRepository;
 
     /**
-     * @param repository
+     * @param anuncioEncontradoRepository
      */
-    public AnuncioEncontradoResource(AnuncioEncontradoRepository repository) {
-        super(repository);
+    public AnuncioEncontradoResource(AnuncioEncontradoRepository anuncioEncontradoRepository) {
+        super(anuncioEncontradoRepository);
+        this.anuncioEncontradoRepository = anuncioEncontradoRepository;
     }
 
     /**
@@ -44,11 +46,11 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
             ObjectMapper objectMapper = new ObjectMapper();
             var anuncioMapped = objectMapper.readValue(value, AnuncioEncontrado.class);
 
-            final AnuncioEncontrado encontrado = this.repository.save(anuncioMapped);
+            final AnuncioEncontrado encontrado = this.anuncioEncontradoRepository.save(anuncioMapped);
 
-            this.fileRepository.handleUploadEncontrado(encontrado.getId(), uploadedFile, this.repository);
+            this.fileRepository.handleUploadEncontrado(encontrado.getId(), uploadedFile, this.anuncioEncontradoRepository);
 
-            Optional<AnuncioEncontrado> anuncioEncontrado = this.repository.findById(encontrado.getId());
+            Optional<AnuncioEncontrado> anuncioEncontrado = this.anuncioEncontradoRepository.findById(encontrado.getId());
 
             return anuncioEncontrado.get();
 
@@ -56,5 +58,14 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
             e.printStackTrace();
             return null;
         }
+    }
+
+        /**
+     * @param id
+     * @return
+     */
+    @GetMapping("/porUsuario/{id}")
+    public List<AnuncioEncontrado> byUserId(@PathVariable("id") Long id) {
+        return this.anuncioEncontradoRepository.findByAnimalUsuario(id);
     }
 }
