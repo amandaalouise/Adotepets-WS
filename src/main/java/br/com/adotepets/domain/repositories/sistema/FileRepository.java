@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -341,15 +342,11 @@ public class FileRepository {
      *
      * @return
      */
-    public Path findDoacaoFiles(Long id, String doc) throws IOException {
+    public byte[] findDoacaoFiles(Long id, String doc) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.DOACAO_FOLDER + id + "/");
-        final Path file = home.resolve(doc);
+        final Path file = home.resolve(doc + ".png");
 
-        if (Files.exists(file)) {
-            return file;
-        } else {
-            return null;
-        }
+        return Files.readAllBytes(file);
     }
 
     /**

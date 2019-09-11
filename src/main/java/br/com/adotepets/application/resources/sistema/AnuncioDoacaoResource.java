@@ -19,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/doacao")
 @Api
+@CrossOrigin(origins = "*")
 public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
 
     private FileRepository fileRepository = new FileRepository();

@@ -3,6 +3,10 @@ package br.com.adotepets.application.resources;
 import br.com.adotepets.domain.model.entities.PersistentEntity;
 import br.com.adotepets.domain.model.exception.ResourceNotFoundException;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +32,19 @@ public class AbstractResource<T extends PersistentEntity> {
     /**
      * @return
      */
+    @CrossOrigin(origins = "*")
     @GetMapping
-    public List<T> findAll() {
-        return this.repository.findAll();
+    public Page<T> findAll() {
+        int page = 0;
+        int size = 12;
+        PageRequest pageRequest = PageRequest.of(
+                page,
+                size,
+                Sort.Direction.ASC,
+                "created_on");
+        return new PageImpl<>(
+                repository.findAll(),
+                pageRequest, size);
     }
 
     /**
