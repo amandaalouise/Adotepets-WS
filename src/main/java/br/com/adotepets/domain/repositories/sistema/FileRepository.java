@@ -326,15 +326,11 @@ public class FileRepository {
      *
      * @return
      */
-    public Path findDocumentoFile(Long id, String doc) throws IOException {
+    public byte[] findDocumentoFile(Long id, String doc) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.DOCUMENTOS_FOLDER + id + "/");
-        final Path file = home.resolve(doc);
+        final Path file = home.resolve(doc + ".png");
 
-        if (Files.exists(file)) {
-            return file;
-        } else {
-            return null;
-        }
+        return Files.readAllBytes(file);
     }
 
     /**
@@ -354,15 +350,11 @@ public class FileRepository {
      *
      * @return
      */
-    public Path findPerdidoFile(Long id, String doc) throws IOException {
+    public byte[] findPerdidoFile(Long id, String doc) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.PERD_FOLDER + id + "/");
-        final Path file = home.resolve(doc);
+        final Path file = home.resolve(doc + ".png");
 
-        if (Files.exists(file)) {
-            return file;
-        } else {
-            return null;
-        }
+        return Files.readAllBytes(file);
     }
 
     /**
@@ -370,15 +362,11 @@ public class FileRepository {
      *
      * @return
      */
-    public Path findEncontradoFile(Long id, String doc) throws IOException {
+    public byte[] findEncontradoFile(Long id, String doc) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.ENC_FOLDER + id + "/");
-        final Path file = home.resolve(doc);
+        final Path file = home.resolve(doc + ".png");
 
-        if (Files.exists(file)) {
-            return file;
-        } else {
-            return null;
-        }
+        return Files.readAllBytes(file);
     }
 
     /**
@@ -390,7 +378,7 @@ public class FileRepository {
     public void removeFile(Long id, JpaRepository<Usuario, Long> usuarioRepository) throws IOException {
         final Usuario user = usuarioRepository.findById(id).get();
         final Path home = Paths.get(this.FILES_FOLDER + this.DOCUMENTOS_FOLDER + String.valueOf(id) + "/");
-        if (Files.exists(home, new LinkOption[]{LinkOption.NOFOLLOW_LINKS})) {
+        if (Files.exists(home, LinkOption.NOFOLLOW_LINKS)) {
             final Path file = home.resolve(user.getImagem());
             Files.deleteIfExists(file);
         }
@@ -405,7 +393,7 @@ public class FileRepository {
     public void removeFilePrestador(Long id, JpaRepository<Prestador, Long> prestadorRepository) throws IOException {
         final Prestador user = prestadorRepository.findById(id).get();
         final Path home = Paths.get(this.FILES_FOLDER + this.DOCUMENTOS_FOLDER + String.valueOf(id) + "/");
-        if (Files.exists(home, new LinkOption[]{LinkOption.NOFOLLOW_LINKS})) {
+        if (Files.exists(home, LinkOption.NOFOLLOW_LINKS)) {
             final Path file = home.resolve(user.getImagem());
             Files.deleteIfExists(file);
         }

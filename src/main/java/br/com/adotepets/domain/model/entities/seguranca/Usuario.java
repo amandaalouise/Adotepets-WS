@@ -25,8 +25,6 @@ import static javax.persistence.FetchType.EAGER;
 @Entity
 @Audited
 @Table
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@JsonIdentityReference(alwaysAsId = true)
 public class Usuario extends PersistentEntity implements UserDetails {
 
     @Getter
