@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/resources/**", "/api/arquivo**");
     }
 
     @Bean
@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
     /**
      * {@inheritDoc}
      *
@@ -83,13 +84,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .hasAnyAuthority(Regras.EXCLUIR, Regras.ADMINISTRADOR)
                 .antMatchers(HttpMethod.POST, "/api/usuario/upload*")
                 .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/doacao/*")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/perdido/*")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/api/encontrado/*")
+                .permitAll()
                 .antMatchers(HttpMethod.POST, "/api/usuario")
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/api/usuario/autenticar")
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/api/prestador/upload*")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/arquivo*")
+                .antMatchers(HttpMethod.GET, "/api/arquivo/**")
                 .permitAll()
                 .antMatchers("/resources/**")
                 .permitAll()

@@ -3,11 +3,9 @@ package br.com.adotepets.application.resources;
 import br.com.adotepets.domain.model.entities.PersistentEntity;
 import br.com.adotepets.domain.model.exception.ResourceNotFoundException;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,17 +32,13 @@ public class AbstractResource<T extends PersistentEntity> {
      */
     @CrossOrigin(origins = "*")
     @GetMapping
-    public Page<T> findAll() {
-        int page = 0;
-        int size = 12;
+    public Page<T> findAll(@RequestParam("page") int pageIndex, @RequestParam("size") int pageSize) {
         PageRequest pageRequest = PageRequest.of(
-                page,
-                size,
+                pageIndex,
+                pageSize,
                 Sort.Direction.ASC,
-                "created_on");
-        return new PageImpl<>(
-                repository.findAll(),
-                pageRequest, size);
+                "createdOn");
+        return repository.findAll(pageRequest);
     }
 
     /**

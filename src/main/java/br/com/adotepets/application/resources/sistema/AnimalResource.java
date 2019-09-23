@@ -3,6 +3,8 @@ package br.com.adotepets.application.resources.sistema;
 import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.sistema.Animal;
 import io.swagger.annotations.Api;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

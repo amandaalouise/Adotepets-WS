@@ -3,9 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="66ec8cae-21fc-4fe1-906b-7affbba248b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/ArquivoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/ArquivoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/seguranca/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/AbstractResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/AbstractResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnimalResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnimalResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/Revision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/Revision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Anuncio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/Anuncio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/AnuncioEncontrado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/AnuncioEncontrado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/AnuncioPerdido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/sistema/AnuncioPerdido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/DefaultRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/DefaultRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnimalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnimalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioDoacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioDoacaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioEncontradoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioEncontradoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioPerdidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioPerdidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/DenunciaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/DenunciaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/ItemMetaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/ItemMetaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/MensagemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/MensagemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/MetaMensalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/MetaMensalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/PrestadorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/PrestadorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/RespostaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/RespostaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/infrastructure/spring/config/WebConfiguration.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -244,12 +261,24 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="img.exists()" language="JAVA" />
-        <watch expression="path.toFile().getName()" language="JAVA" />
-        <watch expression="path.toFile()" language="JAVA" />
-        <watch expression="path.toRealPath()" language="JAVA" />
+        <watch expression="System.out.println(doacao);" language="JAVA" />
+        <watch expression="anuncioDoacaoRepository.findById(anuncioId).get()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

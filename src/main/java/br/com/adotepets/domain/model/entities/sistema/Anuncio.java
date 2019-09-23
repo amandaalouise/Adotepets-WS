@@ -25,15 +25,8 @@ public abstract class Anuncio extends PersistentEntity implements Serializable {
 
     @Getter
     @Setter
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.ALL})
     private Animal animal;
-
-    @Getter
-    @Setter
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate dataPublicacao;
 
     @Getter
     @Setter

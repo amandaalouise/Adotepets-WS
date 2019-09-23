@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -19,10 +20,12 @@ public class AnuncioPerdido extends Anuncio {
 
     @Getter
     @Setter
-    private BigDecimal lat;
+    @Column(columnDefinition = "NUMERIC")
+    private float lat;
 
     @Getter
     @Setter
-    private BigDecimal lng;
+    @Column(columnDefinition = "NUMERIC")
+    private float lng;
 
 }
