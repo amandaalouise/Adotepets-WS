@@ -6,6 +6,9 @@ import br.com.adotepets.domain.repositories.sistema.AnuncioEncontradoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -60,12 +63,17 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
         }
     }
 
-        /**
+    /**
      * @param id
      * @return
      */
     @GetMapping("/porUsuario/{id}")
-    public List<AnuncioEncontrado> byUserId(@PathVariable("id") Long id) {
-        return this.anuncioEncontradoRepository.findByAnimalUsuario(id);
+    public Page<AnuncioEncontrado> byUserId(@PathVariable("id") Long id, @RequestParam("page") int pageIndex, @RequestParam("size") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(
+                pageIndex,
+                pageSize,
+                Sort.Direction.ASC,
+                "createdOn");
+        return this.anuncioEncontradoRepository.findByAnimalUsuarioId(id, pageRequest);
     }
 }

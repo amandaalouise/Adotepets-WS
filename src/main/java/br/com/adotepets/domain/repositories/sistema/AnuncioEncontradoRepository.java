@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public interface AnuncioEncontradoRepository extends JpaRepository<AnuncioEncontrado, Long> {
 
-    @Query("from AnuncioEncontrado ae where ae.animal.usuario = :id")
-    List<AnuncioEncontrado> findByAnimalUsuario(Long id);
+    @Query("from AnuncioEncontrado ae where ae.animal.usuario.id = :id")
+    Page<AnuncioEncontrado> findByAnimalUsuarioId(Long id, Pageable pageable);
 
     @Query("from AnuncioEncontrado")
     Page<AnuncioEncontrado> findByFilters(@Param("filter") String filter, Pageable pageable);

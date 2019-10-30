@@ -8,7 +8,9 @@ import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -68,7 +70,12 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
      * @return
      */
     @GetMapping("/porUsuario/{id}")
-    public List<AnuncioDoacao> byUserId(@PathVariable("id") Long id) {
-        return this.anuncioDoacaoRepository.findByAnimalUsuario(id);
+    public Page<AnuncioDoacao> byUserId(@PathVariable("id") Long id, @RequestParam("page") int pageIndex, @RequestParam("size") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(
+                pageIndex,
+                pageSize,
+                Sort.Direction.ASC,
+                "createdOn");
+        return this.anuncioDoacaoRepository.findByAnimalUsuarioId(id, pageRequest);
     }
 }
