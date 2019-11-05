@@ -1,5 +1,10 @@
 package br.com.adotepets.domain.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,10 +29,15 @@ public abstract class PersistentEntity implements IPersistentEntity<Long> {
     @Getter
     @Column(name = "created_on", nullable = false)
     @ApiModelProperty(hidden = true)
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdOn;
+
     @Getter
     @Column(name = "updated_on")
     @ApiModelProperty(hidden = true)
+    @JsonSerialize(using = ToStringSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime updatedOn;
 
     /**

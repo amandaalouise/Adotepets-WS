@@ -4,6 +4,7 @@ import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.sistema.AnuncioEncontrado;
 import br.com.adotepets.domain.repositories.sistema.AnuncioEncontradoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.data.domain.Page;
@@ -52,6 +53,47 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
             final AnuncioEncontrado encontrado = this.anuncioEncontradoRepository.save(anuncioMapped);
 
             this.fileRepository.handleUploadEncontrado(encontrado.getId(), uploadedFile, this.anuncioEncontradoRepository);
+
+            Optional<AnuncioEncontrado> anuncioEncontrado = this.anuncioEncontradoRepository.findById(encontrado.getId());
+
+            return anuncioEncontrado.get();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @param value
+     * @param uploadedFile
+     * @return
+     */
+    @PostMapping(value = "/edit")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AnuncioEncontrado editAndUpload(@RequestParam @Valid String value,
+                                       @RequestParam(value="files", required = false) List<MultipartFile> uploadedFile,
+                                       @RequestParam(value="delete", required = false) List<String> delete) {
+
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            var anuncioMapped = objectMapper.readValue(value, AnuncioEncontrado.class);
+
+            final AnuncioEncontrado encontrado = this.anuncioEncontradoRepository.getOne(anuncioMapped.getId());
+
+            if(delete != null) {
+                for (String img : delete) {
+                    this.fileRepository.removeFileEncontrado(anuncioMapped.getId(), img);
+                }
+            }
+
+            this.anuncioEncontradoRepository.save(anuncioMapped);
+
+            if(!uploadedFile.isEmpty()) {
+                this.fileRepository.handleUploadEncontrado(encontrado.getId(), uploadedFile, this.anuncioEncontradoRepository);
+            }
 
             Optional<AnuncioEncontrado> anuncioEncontrado = this.anuncioEncontradoRepository.findById(encontrado.getId());
 

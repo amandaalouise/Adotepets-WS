@@ -4,6 +4,7 @@ import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.sistema.AnuncioPerdido;
 import br.com.adotepets.domain.repositories.sistema.AnuncioPerdidoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.data.domain.Page;
@@ -53,9 +54,9 @@ public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
 
             this.fileRepository.handleUploadPerdido(perdido.getId(), uploadedFile, this.anuncioPerdidoRepository);
 
-            Optional<AnuncioPerdido> anuncioEncontrado = this.anuncioPerdidoRepository.findById(perdido.getId());
+            Optional<AnuncioPerdido> anuncioPerdido = this.anuncioPerdidoRepository.findById(perdido.getId());
 
-            return anuncioEncontrado.get();
+            return anuncioPerdido.get();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,14 +65,45 @@ public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
     }
 
     /**
-     * @param id
+     * @param value
+     * @param uploadedFile
      * @return
      */
-    @GetMapping("/porUsuario/{id}")
-    public List<AnuncioPerdido> byUserId(@PathVariable("id") Long id) {
-        return this.anuncioPerdidoRepository.findByAnimalUsuario(id);
-    }
+    @PostMapping(value = "/edit")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AnuncioPerdido editAndUpload(@RequestParam @Valid String value,
+                                       @RequestParam(value="files", required = false) List<MultipartFile> uploadedFile,
+                                       @RequestParam(value="delete", required = false) List<String> delete) {
 
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            var anuncioMapped = objectMapper.readValue(value, AnuncioPerdido.class);
+
+            final AnuncioPerdido perdido = this.anuncioPerdidoRepository.getOne(anuncioMapped.getId());
+
+            if(delete != null) {
+                for (String img : delete) {
+                    this.fileRepository.removeFilePerdido(anuncioMapped.getId(), img);
+                }
+            }
+
+            this.anuncioPerdidoRepository.save(anuncioMapped);
+
+            if(!uploadedFile.isEmpty()) {
+                this.fileRepository.handleUploadPerdido(perdido.getId(), uploadedFile, this.anuncioPerdidoRepository);
+            }
+
+            Optional<AnuncioPerdido> anuncioPerdido = this.anuncioPerdidoRepository.findById(perdido.getId());
+
+            return anuncioPerdido.get();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
         /**
      * @param id
      * @return

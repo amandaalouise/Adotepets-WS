@@ -6,9 +6,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioDoacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioDoacaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioEncontradoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioEncontradoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioPerdidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/AnuncioPerdidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/PersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/PersistentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -224,15 +223,6 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -247,20 +237,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="System.out.println(doacao);" language="JAVA" />

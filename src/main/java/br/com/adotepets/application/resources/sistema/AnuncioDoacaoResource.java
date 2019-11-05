@@ -5,6 +5,7 @@ import br.com.adotepets.domain.model.entities.sistema.AnuncioDoacao;
 import br.com.adotepets.domain.model.exception.ResourceNotFoundException;
 import br.com.adotepets.domain.repositories.sistema.AnuncioDoacaoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.data.domain.Page;
@@ -54,6 +55,47 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
             final AnuncioDoacao doacao = this.anuncioDoacaoRepository.save(anuncioMapped);
 
             this.fileRepository.handleUploadDoacao(doacao.getId(), uploadedFile, this.anuncioDoacaoRepository);
+
+            Optional<AnuncioDoacao> anuncioDoacao = this.anuncioDoacaoRepository.findById(doacao.getId());
+
+            return anuncioDoacao.get();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @param value
+     * @param uploadedFile
+     * @return
+     */
+    @PostMapping(value = "/edit")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AnuncioDoacao editAndUpload(@RequestParam @Valid String value,
+                                       @RequestParam(value="files", required = false) List<MultipartFile> uploadedFile,
+                                       @RequestParam(value="delete", required = false) List<String> delete) {
+
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            var anuncioMapped = objectMapper.readValue(value, AnuncioDoacao.class);
+
+            final AnuncioDoacao doacao = this.anuncioDoacaoRepository.getOne(anuncioMapped.getId());
+
+            if(delete != null) {
+                for (String img : delete) {
+                    this.fileRepository.removeFileDoacao(anuncioMapped.getId(), img);
+                }
+            }
+
+            this.anuncioDoacaoRepository.save(anuncioMapped);
+
+            if(!uploadedFile.isEmpty()) {
+                this.fileRepository.handleUploadDoacao(doacao.getId(), uploadedFile, this.anuncioDoacaoRepository);
+            }
 
             Optional<AnuncioDoacao> anuncioDoacao = this.anuncioDoacaoRepository.findById(doacao.getId());
 

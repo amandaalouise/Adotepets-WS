@@ -155,42 +155,11 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        doacao.getAnimal().setImagens(files);
+        var tempImages = doacao.getAnimal().getImagens();
+        tempImages.addAll(files);
+
+        doacao.getAnimal().setImagens(tempImages);
         anuncioDoacaoRepository.save(doacao);
-
-    }
-
-    /**
-     * Verifica as informações do arquivo a ser gravado, resolve o path e o nome
-     * do arquivo, manda fazer a gravação no sistema de arquivos.
-     *
-     * @param anuncioId
-     * @param file
-     * @throws Exception
-     */
-    public void editaUploadDoacao(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioDoacao, Long> anuncioDoacaoRepository) throws Exception {
-
-        final AnuncioDoacao doacao = anuncioDoacaoRepository.findById(anuncioId).get();
-        List<String> files = new ArrayList<>();
-
-        for (byte[] f : file) {
-
-            String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
-
-            files.add(fileName);
-
-            //Cria o path do arquivo
-            final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.DOACAO_FOLDER + String.valueOf(anuncioId);
-
-            //salva o arquivo.
-            save(path, fileName, f);
-        }
-
-        List<String> imgsDoacao = doacao.getAnimal().getImagens();
-        imgsDoacao.addAll(files);
-        doacao.getAnimal().setImagens(imgsDoacao);
-        anuncioDoacaoRepository.save(doacao);
-
     }
 
     /**
@@ -219,42 +188,11 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        perdido.getAnimal().setImagens(files);
+        var tempImages = perdido.getAnimal().getImagens();
+        tempImages.addAll(files);
+
+        perdido.getAnimal().setImagens(tempImages);
         anuncioPerdidoRepository.save(perdido);
-
-    }
-
-    /**
-     * Verifica as informações do arquivo a ser gravado, resolve o path e o nome
-     * do arquivo, manda fazer a gravação no sistema de arquivos.
-     *
-     * @param anuncioId
-     * @param file
-     * @throws Exception
-     */
-    public void editaUploadPerdido(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioPerdido, Long> anuncioPerdidoRepository) throws Exception {
-
-        final AnuncioPerdido perdido = anuncioPerdidoRepository.findById(anuncioId).get();
-        List<String> files = new ArrayList<>();
-
-        for (byte[] f : file) {
-
-            String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
-
-            files.add(fileName);
-
-            //Cria o path do arquivo
-            final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.PERD_FOLDER + String.valueOf(anuncioId);
-
-            //salva o arquivo.
-            this.save(path, fileName, f);
-        }
-
-        List<String> imgsPerdido = perdido.getAnimal().getImagens();
-        imgsPerdido.addAll(files);
-        perdido.getAnimal().setImagens(imgsPerdido);
-        anuncioPerdidoRepository.save(perdido);
-
     }
 
     /**
@@ -283,40 +221,10 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        encontrado.getAnimal().setImagens(files);
-        anuncioEncontradoRepository.save(encontrado);
+        var tempImages = encontrado.getAnimal().getImagens();
+        tempImages.addAll(files);
 
-    }
-
-    /**
-     * Verifica as informações do arquivo a ser gravado, resolve o path e o nome
-     * do arquivo, manda fazer a gravação no sistema de arquivos.
-     *
-     * @param anuncioId
-     * @param file
-     * @throws Exception
-     */
-    public void editaUploadEncontrado(Long anuncioId, List<byte[]> file, JpaRepository<AnuncioEncontrado, Long> anuncioEncontradoRepository) throws Exception {
-
-        final AnuncioEncontrado encontrado = anuncioEncontradoRepository.findById(anuncioId).get();
-        List<String> files = new ArrayList<>();
-
-        for (byte[] f : file) {
-
-            String fileName = "photo_" + anuncioId + "_" + Calendar.getInstance().getTimeInMillis() + ".png";
-
-            files.add(fileName);
-
-            //Cria o path do arquivo
-            final String path = this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.ENC_FOLDER + String.valueOf(anuncioId);
-
-            //salva o arquivo.
-            this.save(path, fileName, f);
-        }
-
-        List<String> imgsEncontrado = encontrado.getAnimal().getImagens();
-        imgsEncontrado.addAll(files);
-        encontrado.getAnimal().setImagens(imgsEncontrado);
+        encontrado.getAnimal().setImagens(tempImages);
         anuncioEncontradoRepository.save(encontrado);
 
     }
@@ -422,23 +330,11 @@ public class FileRepository {
      * @param fileName
      * @throws IOException
      */
-    public void removeFileDoacao(Long id, String fileName, JpaRepository<AnuncioDoacao, Long> anuncioDoacaoRepository) throws IOException {
-        final AnuncioDoacao anuncio = anuncioDoacaoRepository.findById(id).get();
+    public void removeFileDoacao(Long id, String fileName) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.DOACAO_FOLDER + String.valueOf(id) + "/");
-        List<String> imagensAnuncio = anuncio.getAnimal().getImagens();
-        List<String> imgsRemove = new ArrayList<>();
 
-        for (String s : imagensAnuncio) {
-            if (fileName.equals(s)) {
-                final Path file = home.resolve(s);
-                Files.deleteIfExists(file);
-                imgsRemove.add(s);
-            }
-        }
-
-        imagensAnuncio.removeAll(imgsRemove);
-        anuncio.getAnimal().setImagens(imagensAnuncio);
-        anuncioDoacaoRepository.save(anuncio);
+        final Path file = home.resolve(fileName);
+        Files.deleteIfExists(file);
     }
 
     /**
@@ -464,23 +360,11 @@ public class FileRepository {
      * @param fileName
      * @throws IOException
      */
-    public void removeFilePerdido(Long id, String fileName, JpaRepository<AnuncioPerdido, Long> anuncioPerdidoRepository) throws IOException {
-        final AnuncioPerdido anuncio = anuncioPerdidoRepository.findById(id).get();
+    public void removeFilePerdido(Long id, String fileName) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.PERD_FOLDER + String.valueOf(id) + "/");
-        List<String> imagensAnuncio = anuncio.getAnimal().getImagens();
-        List<String> imgsRemove = new ArrayList<>();
 
-        for (String s : imagensAnuncio) {
-            if (fileName.equals(s)) {
-                final Path file = home.resolve(s);
-                Files.deleteIfExists(file);
-                imgsRemove.add(s);
-            }
-        }
-
-        imagensAnuncio.removeAll(imgsRemove);
-        anuncio.getAnimal().setImagens(imagensAnuncio);
-        anuncioPerdidoRepository.save(anuncio);
+        final Path file = home.resolve(fileName);
+        Files.deleteIfExists(file);
     }
 
     /**
@@ -505,22 +389,10 @@ public class FileRepository {
      * @param id
      * @throws IOException
      */
-    public void removeFileEncontrado(Long id, String fileName, JpaRepository<AnuncioEncontrado, Long> anuncioEncontradoRepository) throws IOException {
-        final AnuncioEncontrado anuncio = anuncioEncontradoRepository.findById(id).get();
+    public void removeFileEncontrado(Long id, String fileName) throws IOException {
         final Path home = Paths.get(this.FILES_FOLDER + this.ANUNCIOS_FOLDER + this.ENC_FOLDER + String.valueOf(id) + "/");
-        List<String> imagensAnuncio = anuncio.getAnimal().getImagens();
-        List<String> imgsRemove = new ArrayList<>();
 
-        for (String s : imagensAnuncio) {
-            if (fileName.equals(s)) {
-                final Path file = home.resolve(s);
-                Files.deleteIfExists(file);
-                imgsRemove.add(s);
-            }
-        }
-        imagensAnuncio.removeAll(imgsRemove);
-        anuncio.getAnimal().setImagens(imagensAnuncio);
-        anuncioEncontradoRepository.save(anuncio);
-
+        final Path file = home.resolve(fileName);
+        Files.deleteIfExists(file);
     }
 }
