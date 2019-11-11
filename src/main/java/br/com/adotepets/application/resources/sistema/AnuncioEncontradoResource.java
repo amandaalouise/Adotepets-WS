@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,27 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @PostMapping(value = "/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public HttpStatus removeEncontrado(@PathVariable Long id, @RequestParam("userId") Long userId) {
+
+        Optional<AnuncioEncontrado> anuncioEncontrado = this.anuncioEncontradoRepository.findById(id);
+        var anuncio = anuncioEncontrado.get();
+
+        if(!anuncio.getAnimal().getUsuario().getId().equals(userId)) {
+            return HttpStatus.UNAUTHORIZED;
+        } else {
+            try {
+                this.fileRepository.removeFilesEncontrado(id, anuncioEncontradoRepository);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            this.anuncioEncontradoRepository.deleteById(id);
+            return HttpStatus.OK;
         }
     }
 

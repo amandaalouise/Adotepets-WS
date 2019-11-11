@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/PersistentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/model/entities/PersistentEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

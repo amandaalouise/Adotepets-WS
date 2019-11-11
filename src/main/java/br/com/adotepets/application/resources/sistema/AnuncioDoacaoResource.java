@@ -2,7 +2,6 @@ package br.com.adotepets.application.resources.sistema;
 
 import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.sistema.AnuncioDoacao;
-import br.com.adotepets.domain.model.exception.ResourceNotFoundException;
 import br.com.adotepets.domain.repositories.sistema.AnuncioDoacaoRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,14 +9,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,6 +61,28 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+
+    @PostMapping(value = "/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public HttpStatus removeDoacao(@PathVariable Long id, @RequestParam("userId") Long userId) {
+
+        Optional<AnuncioDoacao> anuncioDoacao = this.anuncioDoacaoRepository.findById(id);
+        var anuncio = anuncioDoacao.get();
+
+        if(!anuncio.getAnimal().getUsuario().getId().equals(userId)) {
+            return HttpStatus.UNAUTHORIZED;
+        } else {
+            try {
+                this.fileRepository.removeFilesDoacao(id, anuncioDoacaoRepository);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            this.anuncioDoacaoRepository.deleteById(id);
+            return HttpStatus.OK;
         }
     }
 
