@@ -49,6 +49,7 @@ public class AnuncioEncontradoResource extends AbstractResource<AnuncioEncontrad
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             var anuncioMapped = objectMapper.readValue(value, AnuncioEncontrado.class);
 
             final AnuncioEncontrado encontrado = this.anuncioEncontradoRepository.save(anuncioMapped);

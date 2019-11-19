@@ -48,6 +48,7 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             var anuncioMapped = objectMapper.readValue(value, AnuncioDoacao.class);
 
             final AnuncioDoacao doacao = this.anuncioDoacaoRepository.save(anuncioMapped);
