@@ -155,7 +155,11 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        var tempImages = doacao.getAnimal().getImagens();
+        List<String> tempImages = new ArrayList<>();
+
+        if(doacao.getAnimal().getImagens() != null) {
+            tempImages.addAll(doacao.getAnimal().getImagens());
+        }
         tempImages.addAll(files);
 
         doacao.getAnimal().setImagens(tempImages);
@@ -188,7 +192,11 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        var tempImages = perdido.getAnimal().getImagens();
+        List<String> tempImages = new ArrayList<>();
+
+        if(perdido.getAnimal().getImagens() != null) {
+            tempImages.addAll(perdido.getAnimal().getImagens());
+        }
         tempImages.addAll(files);
 
         perdido.getAnimal().setImagens(tempImages);
@@ -221,7 +229,11 @@ public class FileRepository {
             this.save(path, fileName, f.getBytes());
         }
 
-        var tempImages = encontrado.getAnimal().getImagens();
+        List<String> tempImages = new ArrayList<>();
+
+        if(encontrado.getAnimal().getImagens() != null) {
+            tempImages.addAll(encontrado.getAnimal().getImagens());
+        }
         tempImages.addAll(files);
 
         encontrado.getAnimal().setImagens(tempImages);

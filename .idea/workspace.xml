@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="66ec8cae-21fc-4fe1-906b-7affbba248b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioDoacaoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioEncontradoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/application/resources/sistema/AnuncioPerdidoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/adotepets/domain/repositories/sistema/FileRepository.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -239,6 +237,7 @@
       <configuration name="Application">
         <watch expression="System.out.println(doacao);" language="JAVA" />
         <watch expression="anuncioDoacaoRepository.findById(anuncioId).get()" language="JAVA" />
+        <watch expression="encontrado.getAnimal().getImagens()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
