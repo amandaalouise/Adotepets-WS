@@ -42,9 +42,15 @@ spring:
 
 # desabilita preservar sessao no restart
 server:
-  servlet:
-    session:
-      persistent: false
+    port: 8443
+    ssl:
+        key-store: keystore.p12
+        key-store-password: amanda123
+        keyAlias: tomcat
+        keyStoreType: PKCS12
+    servlet:
+      session:
+        persistent: false
 
 # configuracoes do actuator
 management:

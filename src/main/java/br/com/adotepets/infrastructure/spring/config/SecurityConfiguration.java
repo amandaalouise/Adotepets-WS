@@ -72,8 +72,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
-        http.csrf()
+        http.cors().and().
+        csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/actuator/health")
