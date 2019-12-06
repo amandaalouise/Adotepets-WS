@@ -4,9 +4,11 @@ import br.com.adotepets.application.resources.AbstractResource;
 import br.com.adotepets.domain.model.entities.seguranca.Usuario;
 import br.com.adotepets.domain.repositories.seguranca.UsuarioRepository;
 import br.com.adotepets.domain.repositories.sistema.FileRepository;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -29,6 +31,8 @@ public class UsuarioResource extends AbstractResource<Usuario> {
 
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * @param usuarioRepository
@@ -52,11 +56,57 @@ public class UsuarioResource extends AbstractResource<Usuario> {
         try {
 
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             var usuarioMapped = objectMapper.readValue(value, Usuario.class);
+
+            usuarioMapped.setSenha(passwordEncoder.encode(usuarioMapped.getSenha()));
 
             final Usuario usuario = this.repository.save(usuarioMapped);
 
             this.fileRepository.handleFileUpload(usuario.getId(), uploadedFile.getBytes(), this.repository);
+
+            Optional<Usuario> user = this.repository.findById(usuario.getId());
+
+            return user.get();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+        /**
+     * @param value
+     * @param uploadedFile
+     * @return
+     */
+    @Transactional
+    @PostMapping(value = "/edit")
+    @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin
+    public Usuario edit(@RequestParam @Valid String value, @RequestParam(value="file", required = false) MultipartFile uploadedFile) {
+
+        try {
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            objectMapper.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false);
+            var usuarioMapped = objectMapper.readValue(value, Usuario.class);
+
+            //Nome, Email, celular, telefone
+
+            final Usuario usuario = this.usuarioRepository.getOne(usuarioMapped.getId());
+
+            usuario.setNome(!usuarioMapped.getNome().isEmpty() ? usuarioMapped.getNome() : usuario.getNome());
+            usuario.setEmail(!usuarioMapped.getEmail().isEmpty() ? usuarioMapped.getEmail() : usuario.getEmail());
+            usuario.setCelular(!usuarioMapped.getCelular().isEmpty() ? usuarioMapped.getCelular() : usuario.getCelular());
+            usuario.setTelefone(!usuarioMapped.getTelefone().isEmpty() ? usuarioMapped.getTelefone() : usuario.getTelefone());
+
+            this.repository.save(usuario);
+
+            if(!uploadedFile.isEmpty()) {
+                this.fileRepository.handleFileUpload(usuario.getId(), uploadedFile.getBytes(), this.repository);
+            }
 
             Optional<Usuario> user = this.repository.findById(usuario.getId());
 

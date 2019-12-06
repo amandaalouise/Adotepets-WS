@@ -36,8 +36,6 @@ public class Usuario extends PersistentEntity implements UserDetails {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Getter
-    @Setter
     @JsonIgnore
     private String senha;
 
@@ -68,6 +66,16 @@ public class Usuario extends PersistentEntity implements UserDetails {
     @Getter
     @Setter
     private String codConfirmacao;
+
+    @JsonIgnore
+    public String getSenha() {
+        return senha;
+    }
+
+    @JsonProperty
+    public void setSenha(final String senha) {
+        this.senha = senha;
+    }
 
     /**
      * Construtor...
