@@ -106,15 +106,6 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
 
             final AnuncioDoacao doacao = this.anuncioDoacaoRepository.getOne(anuncioMapped.getId());
 
-            doacao.getAnimal().setTipo(!anuncioMapped.getAnimal().getTipo().isEmpty() ? anuncioMapped.getAnimal().getTipo() : doacao.getAnimal().getTipo());
-            doacao.getAnimal().setSexo(!anuncioMapped.getAnimal().getSexo().isEmpty() ? anuncioMapped.getAnimal().getSexo() : doacao.getAnimal().getSexo());
-            doacao.getAnimal().setCastrado(anuncioMapped.getAnimal().isCastrado());
-            doacao.getAnimal().setNome(!anuncioMapped.getAnimal().getNome().isEmpty() ? anuncioMapped.getAnimal().getNome() : doacao.getAnimal().getNome());
-            doacao.getAnimal().setCor(!anuncioMapped.getAnimal().getCor().isEmpty() ? anuncioMapped.getAnimal().getCor() : doacao.getAnimal().getCor());
-            doacao.getAnimal().setPorte(!anuncioMapped.getAnimal().getPorte().isEmpty() ? anuncioMapped.getAnimal().getPorte() : doacao.getAnimal().getPorte());
-            doacao.getAnimal().setIdade(!anuncioMapped.getAnimal().getIdade().isEmpty() ? anuncioMapped.getAnimal().getIdade() : doacao.getAnimal().getIdade());
-            doacao.getAnimal().setDescricao(!anuncioMapped.getAnimal().getDescricao().isEmpty() ? anuncioMapped.getAnimal().getDescricao() : doacao.getAnimal().getDescricao());
-
             if(delete != null) {
                 for (String img : delete) {
                     this.fileRepository.removeFileDoacao(anuncioMapped.getId(), img);
