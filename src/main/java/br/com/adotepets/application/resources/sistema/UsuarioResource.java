@@ -7,10 +7,13 @@ import br.com.adotepets.domain.repositories.sistema.FileRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,6 +36,21 @@ public class UsuarioResource extends AbstractResource<Usuario> {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    void recuperacaoDeSenha(String destination, String password) {
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(destination);
+        msg.setFrom("admin@pettix.com.br");
+
+        msg.setSubject("Pettix - Recuperação de acesso.");
+        msg.setText("Aqui está sua nova senha de acesso: \n\n" +password+ "\n\n\nFaça login e altere para uma nova senha.");
+
+        javaMailSender.send(msg);
+    }
 
     /**
      * @param usuarioRepository
@@ -143,5 +161,39 @@ public class UsuarioResource extends AbstractResource<Usuario> {
         } else {
             return null;
         }
+    }
+
+    @Transactional
+    @PostMapping(value = "/reseta-senha")
+    @CrossOrigin
+    public void resetarSenha(@RequestParam String email) {
+
+        Usuario usuario = this.usuarioRepository.findByEmail(email).get();
+
+        var novaSenha = generatePassword();
+        usuario.setSenha(passwordEncoder.encode(novaSenha));
+
+        recuperacaoDeSenha(email, novaSenha);
+    }
+
+    @Transactional
+    @PostMapping(value = "/altera-senha")
+    public Usuario alteraSenha(@RequestParam String senhaAntiga, @RequestParam String novaSenha, @RequestParam Long id) {
+
+        Usuario usuario = this.usuarioRepository.findById(id).get();
+
+        if(passwordEncoder.matches(senhaAntiga, usuario.getSenha())) {
+            usuario.setSenha(novaSenha);
+            this.usuarioRepository.save(usuario);
+
+            return usuario;
+        } else {
+            return null;
+        }
+
+    }
+
+    public String generatePassword() {
+        return RandomStringUtils.randomAlphanumeric(10);
     }
 }

@@ -3,6 +3,11 @@ spring:
   application.name: adotepets
   jmx.enabled: false
 
+  mail:
+    host: localhost
+    username: admin
+    password: amanda123
+
   servlet:
     multipart:
       max-file-size: 100MB

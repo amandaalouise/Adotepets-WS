@@ -84,6 +84,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .hasAnyAuthority(Regras.EXCLUIR, Regras.ADMINISTRADOR)
                 .antMatchers(HttpMethod.POST, "/api/usuario/upload*")
                 .permitAll()
+                .antMatchers(HttpMethod.POST, "/api/usuario/reseta-senha*")
+                .permitAll()
                 .antMatchers(HttpMethod.GET, "/api/doacao/**")
                 .permitAll()
                 .antMatchers(HttpMethod.GET, "/api/doacao**")
