@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,6 +87,26 @@ public class AnuncioDoacaoResource extends AbstractResource<AnuncioDoacao> {
             this.anuncioDoacaoRepository.deleteById(id);
             return HttpStatus.OK;
         }
+    }
+
+    /**
+     * @return
+     */
+    @GetMapping(value = "filter")
+    public Page<AnuncioDoacao> findByFilters(
+            @RequestParam("page") int pageIndex,
+            @RequestParam("size") int pageSize,
+            @RequestParam("tipo") String tipo,
+            @RequestParam("sexo") String sexo,
+            @RequestParam("porte") String porte,
+            @RequestParam("idade") String idade) {
+        PageRequest pageRequest = PageRequest.of(
+                pageIndex,
+                pageSize,
+                Sort.Direction.ASC,
+                "createdOn");
+
+        return anuncioDoacaoRepository.findByFilters(pageRequest, tipo, sexo, porte, idade);
     }
 
     /**

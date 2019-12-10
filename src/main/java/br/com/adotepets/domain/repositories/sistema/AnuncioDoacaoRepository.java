@@ -16,6 +16,15 @@ public interface AnuncioDoacaoRepository extends JpaRepository<AnuncioDoacao, Lo
     @Query("from AnuncioDoacao ad where ad.animal.usuario.id = :id")
     Page<AnuncioDoacao> findByAnimalUsuarioId(Long id, Pageable pageable);
 
-     @Query("from AnuncioDoacao")
-     Page<AnuncioDoacao> findByFilters(@Param("filter") String filter, Pageable pageable);
+     @Query("from AnuncioDoacao ad where " +
+             "(:tipo = '' or upper(ad.animal.tipo) = upper(:tipo)) AND " +
+             "(:sexo = '' or upper(ad.animal.sexo) = upper(:sexo)) AND " +
+             "(:porte = '' or upper(ad.animal.porte) = upper(:porte)) AND " +
+             "(:idade = '' or upper(ad.animal.idade) = upper(:idade))")
+     Page<AnuncioDoacao> findByFilters(
+             Pageable pageable,
+             String tipo,
+             String sexo,
+             String porte,
+             String idade);
 }
