@@ -88,6 +88,26 @@ public class AnuncioPerdidoResource extends AbstractResource<AnuncioPerdido> {
     }
 
     /**
+     * @return
+     */
+    @GetMapping(value = "filter")
+    public Page<AnuncioPerdido> findByFilters(
+            @RequestParam("page") int pageIndex,
+            @RequestParam("size") int pageSize,
+            @RequestParam("tipo") String tipo,
+            @RequestParam("sexo") String sexo,
+            @RequestParam("porte") String porte,
+            @RequestParam("idade") String idade) {
+        PageRequest pageRequest = PageRequest.of(
+                pageIndex,
+                pageSize,
+                Sort.Direction.ASC,
+                "createdOn");
+
+        return anuncioPerdidoRepository.findByFilters(pageRequest, tipo, sexo, porte, idade);
+    }
+
+    /**
      * @param value
      * @param uploadedFile
      * @return

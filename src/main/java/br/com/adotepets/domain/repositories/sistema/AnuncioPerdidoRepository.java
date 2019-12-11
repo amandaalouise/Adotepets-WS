@@ -16,6 +16,15 @@ public interface AnuncioPerdidoRepository extends JpaRepository<AnuncioPerdido, 
     @Query("from AnuncioPerdido ap where ap.animal.usuario.id = :id")
     Page<AnuncioPerdido> findByAnimalUsuarioId(Long id, Pageable pageable);
 
-    @Query("from AnuncioPerdido")
-    Page<AnuncioPerdido> findByFilters(@Param("filter") String filter, Pageable pageable);
+         @Query("from AnuncioPerdido ad where " +
+             "(:tipo = '' or upper(ad.animal.tipo) = upper(:tipo)) AND " +
+             "(:sexo = '' or upper(ad.animal.sexo) = upper(:sexo)) AND " +
+             "(:porte = '' or upper(ad.animal.porte) = upper(:porte)) AND " +
+             "(:idade = '' or upper(ad.animal.idade) = upper(:idade))")
+     Page<AnuncioPerdido> findByFilters(
+             Pageable pageable,
+             String tipo,
+             String sexo,
+             String porte,
+             String idade);
 }

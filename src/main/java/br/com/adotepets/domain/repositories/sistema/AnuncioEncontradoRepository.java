@@ -16,6 +16,15 @@ public interface AnuncioEncontradoRepository extends JpaRepository<AnuncioEncont
     @Query("from AnuncioEncontrado ae where ae.animal.usuario.id = :id")
     Page<AnuncioEncontrado> findByAnimalUsuarioId(Long id, Pageable pageable);
 
-    @Query("from AnuncioEncontrado")
-    Page<AnuncioEncontrado> findByFilters(@Param("filter") String filter, Pageable pageable);
+         @Query("from AnuncioEncontrado ad where " +
+             "(:tipo = '' or upper(ad.animal.tipo) = upper(:tipo)) AND " +
+             "(:sexo = '' or upper(ad.animal.sexo) = upper(:sexo)) AND " +
+             "(:porte = '' or upper(ad.animal.porte) = upper(:porte)) AND " +
+             "(:idade = '' or upper(ad.animal.idade) = upper(:idade))")
+     Page<AnuncioEncontrado> findByFilters(
+             Pageable pageable,
+             String tipo,
+             String sexo,
+             String porte,
+             String idade);
 }
